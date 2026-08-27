@@ -7,19 +7,39 @@
 
 header {
     background-color: #1d5b8a;
-    color: #f0eeee;
+    color: #fff;
+    padding: 1rem, 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
+header h1 {
+    font-size: 1.4rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+}
+header nav a {
+    color: #fff;
+    font-weight: 500;
+}
 body {
-    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
-    color : #070000;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #070000;
     background-color: #f5f6f8;
     line-height: 1.5;
 }
+
 a {
-    color : #1d5b8a;
+    color: #1d5b8a;
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
