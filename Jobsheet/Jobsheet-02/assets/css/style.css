@@ -1,4 +1,25 @@
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 header {
     background-color: #1d5b8a;
-    color: #fff;
+    color: #f0eeee;
+}
+
+body {
+    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+    color : #070000;
+    background-color: #f5f6f8;
+    line-height: 1.5;
+}
+a {
+    color : #1d5b8a;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
