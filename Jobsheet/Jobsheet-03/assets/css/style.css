@@ -165,15 +165,18 @@ footer {
     font-size: 0.9rem;
 }
 @media (max-width: 768px) {
-    .nav-toggle {
-        display :none;
+     main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .nav-toggle-label {
-        display : none;
-        font-size : 1.6rem;
-        color:#fff;
-        cursor: pointer;   
-    }
+}
+.nav-toggle {
+    display :none;
+}
+.nav-toggle-label {
+    display : none;
+    font-size : 1.6rem;
+    color:#fff;
+    cursor: pointer;   
 }
 @media (max-width: 480px){
     header {
@@ -199,4 +202,15 @@ header nav ul {
     flex-direction: column;
     gap: 0.75rem;
 }
+main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+
+    form input,
+    form select {
+        max-width: 100%;
+    }
+}
+.table responsive {
+    overflow-x: auto;   
 }
