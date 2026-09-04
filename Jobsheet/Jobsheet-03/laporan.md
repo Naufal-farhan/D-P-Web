@@ -35,16 +35,20 @@ pada Jobsheet kali ini juga kita membuat tombol untuk mobile(di desktop tidak te
 3. **Ubah breakpoint tablet** dari `768px` menjadi `900px`, lalu amati
    di lebar layar berapa susunan kartu berubah — buktikan bahwa breakpoint
    memang bisa disesuaikan bebas sesuai kebutuhan desain.
-4. **Terapkan pola `table-responsive`** ke elemen lain yang berpotensi
+
+   <img width="287" height="79" alt="image" src="https://github.com/user-attachments/assets/949aac98-7c54-4e08-972b-2eef07b16049" />
+
+5. **Terapkan pola `table-responsive`** ke elemen lain yang berpotensi
    melebar di layar sempit, misalnya kalau suatu saat kamu menambahkan
    blok kode `<pre>` yang panjang di salah satu halaman.
-5. **Ubah posisi ikon hamburger** — misalnya pindahkan `.nav-toggle-label`
+   
+6. **Ubah posisi ikon hamburger** — misalnya pindahkan `.nav-toggle-label`
    ke urutan terakhir di `<header>` (setelah `<nav>`) lalu amati apakah
    sibling combinator `.nav-toggle:checked ~ nav` di
    [bab 3 §3.5](03-css-hamburger-checkbox-hack.md#35-langkah-4--sibling-combinator-menghubungkan-status-ke-nav)
    masih bekerja — ingat catatan bahwa combinator `~` mensyaratkan
    target berada **setelah** elemen sumbernya di HTML.
-6. **Bandingkan dengan pendekatan mobile-first** — coba tulis ulang
+7. **Bandingkan dengan pendekatan mobile-first** — coba tulis ulang
    `style.css` dari nol memakai `@media (min-width: ...)` alih-alih
    `max-width`, dan rasakan sendiri bedanya alur berpikirnya.
 
