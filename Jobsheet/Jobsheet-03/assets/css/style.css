@@ -214,3 +214,39 @@ main section:nth-of-type(2) {
 .table responsive {
     overflow-x: auto;   
 }
+
+@media (min-width: 1800px){
+    main {
+        max-width: 100% !important;
+        width: 100%;
+        margin: 1.5rem 0;
+        padding: 0 2rem;
+    }
+    section {
+        padding: 1.5rem 2rem;
+        width: 100%;
+    }
+    body {
+    font-size: 2.15rem !important; /* Memperbesar ukuran dasar teks di seluruh halaman */
+    line-height: 1.6;
+}
+h1{
+    font-size: 5.2rem !important;
+    margin-bottom: 10px;
+}
+h3{
+    font-size: 3.2rem !important;
+    margin-bottom: 10px;
+}
+nav{
+    font-size: 3.2rem !important;
+    margin-bottom: 10px;
+}
+section{
+    background-color: #fff;
+    font-size: 3.2rem !important;
+    border-radius: 8px;
+    padding: 30 1.5rem;
+    margin-bottom: 1.5rem
+}
+}
