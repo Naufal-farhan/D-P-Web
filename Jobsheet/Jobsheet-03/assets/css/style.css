@@ -214,7 +214,7 @@ main section:nth-of-type(2) {
 .table responsive {
     overflow-x: auto;   
 }
-
+/* Breakpoint baru */
 @media (min-width: 1800px){
     main {
         max-width: 100% !important;
