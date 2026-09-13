@@ -3,14 +3,16 @@
 ### NIM     : 254107020077
 ### KELAS   : TI-2D
 
-<!-- SCREENSHOT 1: Tampilan indeks (desktop) — tampilkan halaman index.html versi Bootstrap di browser desktop, pastikan navbar melebar dan kartu statistik tampil berjajar -->
-<!-- SCREENSHOT 2: Tampilan List Buku (desktop) — tampilkan halaman buku/list.html versi Bootstrap di browser desktop, pastikan tabel terlihat dengan styling Bootstrap -->
-<!-- SCREENSHOT 3: Tampilan form tambah buku (desktop) — tampilkan halaman buku/tambah.html versi Bootstrap di browser desktop, pastikan form controls terlihat rapi -->
-<!-- SCREENSHOT 4 (OPSIONAL): Tampilan navbar hamburger (mobile) — perkecil browser di bawah 992px, klik tombol hamburger, tampilkan menu navigasi yang terbuka -->
-<!-- <img width="XXX" height="XXX" alt="image" src="URL_GITHUB_SCREENSHOT_HAMBURGER" /> -->
+<img width="959" height="472" alt="image" src="https://github.com/user-attachments/assets/8b4f0d3f-8ed0-4d76-ad57-c98a2a2bcced" />
 
-<!-- SCREENSHOT 5 (OPSIONAL): Tampilan tabel di mobile — perkecil browser di bawah 576px, tampilkan tabel dengan scroll horizontal aktif -->
-<!-- <img width="XXX" height="XXX" alt="image" src="URL_GITHUB_SCREENSHOT_TABEL_MOBILE" /> -->
+
+<img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/fb3b6500-0773-4070-8e99-09a8323e0a88" />
+
+
+<img width="958" height="472" alt="image" src="https://github.com/user-attachments/assets/6a15f91c-cbbc-4795-873c-0f703b128bb8" />
+
+<img width="215" height="398" alt="image" src="https://github.com/user-attachments/assets/99d78e07-596c-44a4-8893-f85313196849" />
+
 
 ## Rangkuman dan Penjelasan
 
