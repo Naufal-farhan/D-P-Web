@@ -1,10 +1,14 @@
 {
   "functions": {
     "**/*.php": {
-      "runtime": "vercel-php@0.6.0"
+      "runtime": "vercel-php@0.7.3"
     }
   },
   "routes": [
+    {
+      "src": "/Jobsheet-07/(.*)",
+      "dest": "/Jobsheet-07/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/$1"
