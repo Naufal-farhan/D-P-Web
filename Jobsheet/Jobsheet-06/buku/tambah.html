@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
-    
-    <head>
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-        <body>
+
+<head>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
     <header>
-        <h1>SIMPUS-MINI</h1>
+        <h1>RENTAL MOBIL</h1>
         <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
         <nav>
             <ul>
@@ -23,39 +24,27 @@
     <main>
         <form id="form-tambah">
             <p>
-                <label for="judul">judul</label><br>
-                <input type="text" id="judul" name="judul" required>
+                <label for="jenis">Jenis</label><br>
+                <input type="text" id="jenis" name="jenis" required>
             </p>
             <p>
-                <label for="Pengarang">Pengarang</label><br>
-                <input type="text" id="Pengarang" name="Pengarang" required>
+                <label for="Penyewa">Penyewa</label><br>
+                <input type="text" id="Penyewa" name="Penyewa" required>
             </p>
             <p>
-                <label for="tahun">Tahun Terbit</label><br>
-                <input type="date" id="tahun" name="tahun" required>
+                <label for="sopir">Sopir</label><br>
+                <input type="text" id="sopir" name="sopir" required>
             </p>
             <p>
-                <label for="isbn">ISBN</label><br>
-                <input type="isbn" id="isbn" name="judul" required>
-            </p>
-            <p>
-                <label for="stok">Stok</label><br>
-                <input type="number" id="stok" name="stok" required>
-            </p>
-            <p>
-                <label for="kategori">Kategori</label><br>
-                <select id="kategori" name="kategori" required>
-                    <option value="fiksi">Fiksi</option>
-                    <option value="non-fiksi">non-Fiksi</option>
-                    <option value="referensi">Referensi</option>
-                </select>
+                <label for="masa">Masa (Hari)</label><br>
+                <input type="number" id="masa" name="masa" min="1" placeholder="Contoh: 2" required>
             </p>
             <p>
                 <button type="Submit">Submit</button>
             </p>
         </form>
     </main>
-    
+
     <footer>
         <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
     </footer>

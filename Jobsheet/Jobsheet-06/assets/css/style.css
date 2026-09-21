@@ -7,28 +7,24 @@
 
 body {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-    color: #e3bd8d; 
+    color: #e3bd8d;
     background-color: #1e1a2d;
     line-height: 1.5;
 }
 
 header {
-background-color: #81021f;
+    background-color: #81021f;
     color: #e3bd8d;
+max-width: 1100px; /* <--- Ubah angka ini agar pas dengan konten di bawah */
     
-    /* Tambahkan max-width agar lebarnya sama dengan kotak konten di bawah */
-    max-width: 1200px; /* Sesuaikan dengan lebar kotak konten di bawah Anda */
+    width: 100%;       /* Agar responsif saat layar mengecil */
+    margin: 20px auto; /* 'auto' di kiri-kanan membuat posisi selalu pas di tengah */
     
-    /* Berikan jarak atas-bawah (misal 15px) dan 'auto' di kiri-kanan agar di tengah */
-    margin: 1.25rem 1.25rem; 
-    
-    /* Padding untuk memberikan jarak teks ke tepi kiri-kanan dalam header */
-    padding: 15px 20px; 
-    
+    box-sizing: border-box; /* Mencegah padding menambah lebar elemen */
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     border-radius: 8px;
 }
 
@@ -74,16 +70,47 @@ section h2 {
     color: #e3bd8d;
 }
 
-/* Kartu Statistik (CSS Grid) */
+/* Container Utama Ringkasan (Membagi Kiri & Kanan) */
 main section:nth-of-type(2) {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem ;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Membuat isi kolom kiri dan kanan rata tengah secara vertikal */
+    gap: 2rem;
+    padding: 1.5rem; /* Tambahkan padding jika menggunakan pembungkus merah */
 }
 
+/* Area Kiri: Teks & Judul */
+main section:nth-of-type(2) .ringkasan-info {
+    flex: 1; /* Mengambil proporsi ruang di sebelah kiri */
+}
+
+main section:nth-of-type(2) .ringkasan-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e3bd8d; /* Warna krem agar kontras dengan latar belakang merah */
+    margin-bottom: 0.5rem;
+}
+
+main section:nth-of-type(2) .ringkasan-info p {
+    font-size: 0.95rem;
+    color: #e3bd8d;
+    line-height: 1.4;
+}
+
+/* Area Kanan: Grid 2x2 untuk 4 Kartu */
+main section:nth-of-type(2) .ringkasan-cards {
+    flex: 1.5; /* Mengambil proporsi ruang lebih lebar di sebelah kanan */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Membagi kartu menjadi 2 kolom x 2 baris */
+    gap: 1rem;
+}
+
+/* Styling Kartu (Sesuai dengan CSS Asli Anda) */
 main section:nth-of-type(2) article {
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #e3bd8d;
     border-radius: 3.9px;
     padding: 1.25rem;
@@ -92,14 +119,17 @@ main section:nth-of-type(2) article {
 }
 
 main section:nth-of-type(2) article h3 {
-    font-size: 1.25rem;
+    font-size: 1rem; /* Ukuran disesuaikan agar muat di grid 2x2 */
     font-weight: 700;
     color: #81021f;
+    margin-bottom: 0.5rem;
 }
+
 main section:nth-of-type(2) article p {
-    font-size: 1.20rem;
+    font-size: 1.5rem; /* Ukuran angka diperbesar sedikit agar menonjol */
     font-weight: 700;
     color: #81021f;
+    margin: 0;
 }
 
 main section:nth-of-type(3) h3 {
@@ -182,7 +212,7 @@ form label {
     display: block;
     margin-bottom: 0.35rem;
     font-weight: 600;
-    color: #444;
+    color: #e3bd8d;
 }
 
 form input,
@@ -270,49 +300,6 @@ footer {
     overflow-x: auto;
 }
 
-/* Breakpoint baru */
-@media (min-width: 1800px) {
-    main {
-        max-width: 100% !important;
-        width: 100%;
-        margin: 1.5rem 0;
-        padding: 0 2rem;
-    }
-
-    section {
-        padding: 1.5rem 2rem;
-        width: 100%;
-    }
-
-    body {
-        font-size: 2.15rem !important;
-        /* Memperbesar ukuran dasar teks di seluruh halaman */
-        line-height: 1.6;
-    }
-
-    h1 {
-        font-size: 5.2rem !important;
-        margin-bottom: 10px;
-    }
-
-    h3 {
-        font-size: 3.2rem !important;
-        margin-bottom: 10px;
-    }
-
-    nav {
-        font-size: 3.2rem !important;
-        margin-bottom: 10px;
-    }
-
-    section {
-        background-color: #e3bd8d;
-        font-size: 3.2rem !important;
-        border-radius: 8px;
-        padding: 30 1.5rem;
-        margin-bottom: 1.5rem
-    }
-}
 
 .error {
     display: block;
