@@ -20,10 +20,10 @@ async function muatDaftarBuku() {
         daftarBuku.forEach(function (buku) {
             const tr = document.createElement("tr");
             tr.innerHTML =
-                "<td>" + buku.judul + "</td>" +
-                "<td>" + buku.pengarang + "</td>" +
-                "<td>" + buku.tahun + "</td>" +
-                "<td>" + buku.stok + "</td>" +
+                "<td>" + buku.jenis + "</td>" +
+                "<td>" + buku.penyewa + "</td>" +
+                "<td>" + buku.sopir + "</td>" +
+                "<td>" + buku.masa + "</td>" +
                 "<td>" +
                 "<button type=\"button\">Edit</button> " +
                 "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +

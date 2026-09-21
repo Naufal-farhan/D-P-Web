@@ -16,13 +16,13 @@ async function muatDaftarAnggota() {
         }
         const daftarAnggota = await res.json();
 
-        daftarAnggota.forEach(function (anggota) {
+        daftarAnggota.forEach(function (sopir) {
             const tr = document.createElement("tr");
             tr.innerHTML =
-                "<td>" + anggota.no_anggota + "</td>" +
-                "<td>" + anggota.nama + "</td>" +
-                "<td>" + anggota.alamat + "</td>" +
-                "<td>" + anggota.no_hp + "</td>" +
+                "<td>" + sopir.no_sopir + "</td>" +
+                "<td>" + sopir.nama + "</td>" +
+                "<td>" + sopir.alamat + "</td>" +
+                "<td>" + sopir.no_hp + "</td>" +
                 "<td>" +
                 "<button type=\"button\">Edit</button> " +
                 "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
