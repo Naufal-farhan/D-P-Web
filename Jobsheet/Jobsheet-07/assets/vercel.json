@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "functions": {
     "Jobsheet-07/api/**/*.php": {
       "runtime": "vercel-php@0.7.3"
