@@ -1,4 +1,9 @@
 <?php 
+require __DIR__ . '/../includes/koneksi.php';
+
+// Ambil data dari database (disesuaikan nama variabelnya)
+$rentalMobil_db = $pdo->query("SELECT * FROM order_rental ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+
 include '../includes/header.php'; 
 ?>
 
@@ -30,8 +35,8 @@ include '../includes/header.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($_SESSION['buku'])): ?>
-                        <?php foreach ($_SESSION['buku'] as $item): ?>
+                    <?php if (!empty($rentalMobil_db)): ?>
+                        <?php foreach ($rentalMobil_db as $item): ?>
                             <tr>
                                 <td><?= htmlspecialchars($item['jenis']); ?></td>
                                 <td><?= htmlspecialchars($item['penyewa']); ?></td>

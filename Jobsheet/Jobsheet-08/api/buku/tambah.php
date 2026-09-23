@@ -1,5 +1,5 @@
 <?php 
-// Memanggil header.php dari folder includes (naik 1 level)
+// Naik 2 level: dari api/buku/ ke root project
 include '../includes/header.php'; 
 ?>
 
@@ -10,8 +10,8 @@ include '../includes/header.php';
             <input type="text" id="jenis" name="jenis" required>
         </p>
         <p>
-            <label for="Penyewa">Penyewa</label><br>
-            <input type="text" id="Penyewa" name="Penyewa" required>
+            <label for="penyewa">Penyewa</label><br>
+            <input type="text" id="penyewa" name="penyewa" required>
         </p>
         <p>
             <label for="sopir">Sopir</label><br>
@@ -28,6 +28,5 @@ include '../includes/header.php';
 </main>
 
 <?php 
-// Memanggil footer.php dari folder includes (naik 1 level)
 include '../includes/footer.php'; 
 ?>
