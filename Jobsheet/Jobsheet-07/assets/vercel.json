@@ -9,12 +9,12 @@
   },
   "routes": [
     {
-      "src": "/Jobsheet-07/api/(.*)",
-      "dest": "/Jobsheet-07/api/$1"
+      "src": "../Jobsheet-07/api/(.*)",
+      "dest": "../Jobsheet-07/api/$1"
     },
     {
-      "src": "/Jobsheet-07/api",
-      "dest": "/Jobsheet-07/api/index.php"
+      "src": "../Jobsheet-07/api",
+      "dest": "../Jobsheet-07/api/index.php"
     }
   ]
 }
