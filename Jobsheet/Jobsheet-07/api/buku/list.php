@@ -9,7 +9,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
         <section>
             <h2>Daftar Buku</h2>
 
-            <?php if ($flash): ?>
+            <?php if ($flash): ?>   
                 <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
             <?php endif; ?>
 

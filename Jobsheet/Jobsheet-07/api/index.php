@@ -6,8 +6,8 @@ $totalBuku = count($_SESSION['buku'] ?? []);
 $totalAnggota = count($_SESSION['anggota'] ?? []);
 ?>
         <section>
-            <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
-            <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
+            <h2>Welcome To Library Mini System</h2>
+            <p>kami hadir untuk mempermudah kalian</p>
         </section>
 
         <section>
