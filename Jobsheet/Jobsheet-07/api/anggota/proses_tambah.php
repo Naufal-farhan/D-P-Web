@@ -1,36 +1,46 @@
 <?php
 session_start();
 
+// Tangkap data dari form tambah.php
 $nama = trim($_POST['nama'] ?? '');
-$noAnggota = trim($_POST['no_anggota'] ?? '');
+$no_supir = trim($_POST['no_supir'] ?? '');
 $alamat = trim($_POST['alamat'] ?? '');
-$noHp = trim($_POST['no_hp'] ?? '');
+$no_hp = trim($_POST['no_hp'] ?? '');
+$tgl_gabung = $_POST['tgl_gabung'] ?? '';
+$email = trim($_POST['email'] ?? '');
 
+// Validasi server-side
 $errors = [];
 if ($nama === '') {
-    $errors[] = "Nama wajib diisi.";
+    $errors[] = "Nama sopir wajib diisi.";
 }
-if ($noAnggota === '') {
-    $errors[] = "No. Anggota wajib diisi.";
+if ($no_supir === '') {
+    $errors[] = "No. Supir wajib diisi.";
 }
 
+// Jika ada error, simpan ke flash message lalu balikkan ke tambah.php
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
     header('Location: tambah.php');
     exit;
 }
 
+// Inisialisasi session array jika belum ada
 if (!isset($_SESSION['anggota'])) {
     $_SESSION['anggota'] = [];
 }
 
+// Simpan data sopir baru ke dalam session
 $_SESSION['anggota'][] = [
     'nama' => $nama,
-    'no_anggota' => $noAnggota,
+    'no_supir' => $no_supir,
     'alamat' => $alamat,
-    'no_hp' => $noHp,
+    'no_hp' => $no_hp,
+    'tgl_gabung' => $tgl_gabung,
+    'email' => $email,
 ];
 
-$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
+// Set pesan sukses dan redirect ke list.php
+$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data sopir berhasil ditambahkan.'];
 header('Location: list.php');
 exit;

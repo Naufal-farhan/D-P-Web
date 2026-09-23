@@ -1,48 +1,48 @@
 <?php
 session_start();
 
-$judul = trim($_POST['judul'] ?? '');
-$pengarang = trim($_POST['pengarang'] ?? '');
-$tahun = $_POST['tahun'] ?? '';
-$isbn = trim($_POST['isbn'] ?? '');
-$stok = $_POST['stok'] ?? '';
-$kategori = trim($_POST['kategori'] ?? '');
+// Tangkap data dari form tambah.php
+$jenis = trim($_POST['jenis'] ?? '');
+$penyewa = trim($_POST['Penyewa'] ?? '');
+$sopir = trim($_POST['sopir'] ?? '');
+$masa = $_POST['masa'] ?? '';
 
-// Validasi server-side — wajib ada meski sudah divalidasi JS di Jobsheet 5,
-// karena validasi client bisa dilewati (nonaktifkan JS / kirim request manual).
+// Validasi server-side
 $errors = [];
-if ($judul === '') {
-    $errors[] = "Judul wajib diisi.";
+if ($jenis === '') {
+    $errors[] = "Jenis mobil wajib diisi.";
 }
-if ($pengarang === '') {
-    $errors[] = "Pengarang wajib diisi.";
+if ($penyewa === '') {
+    $errors[] = "Nama penyewa wajib diisi.";
 }
-if (!is_numeric($tahun) || $tahun < 1900 || $tahun > 2026) {
-    $errors[] = "Tahun harus di antara 1900-2026.";
+if ($sopir === '') {
+    $errors[] = "Nama sopir wajib diisi.";
 }
-if (!is_numeric($stok) || $stok < 0) {
-    $errors[] = "Stok tidak boleh negatif.";
+if (!is_numeric($masa) || $masa < 1) {
+    $errors[] = "Masa sewa minimal 1 hari.";
 }
 
+// Jika ada error, kirim pesan error lewat session lalu kembalikan ke tambah.php
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
     header('Location: tambah.php');
     exit;
 }
 
+// Inisialisasi session array jika belum ada
 if (!isset($_SESSION['buku'])) {
     $_SESSION['buku'] = [];
 }
 
+// Simpan data order baru ke dalam session
 $_SESSION['buku'][] = [
-    'judul' => $judul,
-    'pengarang' => $pengarang,
-    'tahun' => (int) $tahun,
-    'isbn' => $isbn,
-    'stok' => (int) $stok,
-    'kategori' => $kategori,
+    'jenis' => $jenis,
+    'penyewa' => $penyewa,
+    'sopir' => $sopir,
+    'masa' => (int) $masa,
 ];
 
-$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Buku berhasil ditambahkan.'];
+// Set pesan sukses dan redirect ke list.php
+$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data order rental berhasil ditambahkan.'];
 header('Location: list.php');
 exit;

@@ -1,49 +1,33 @@
-<?php
-$page_title = "Tambah Buku";
-include __DIR__ . '/../includes/header.php';
-
-$flash = $_SESSION['flash'] ?? null;
-unset($_SESSION['flash']);
+<?php 
+// Memanggil header.php dari folder includes (naik 1 level)
+include '../includes/header.php'; 
 ?>
-        <section>
-            <h2>Tambah Buku</h2>
 
-            <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
-            <?php endif; ?>
+<main>
+    <form id="form-tambah" action="proses_tambah.php" method="POST">
+        <p>
+            <label for="jenis">Jenis</label><br>
+            <input type="text" id="jenis" name="jenis" required>
+        </p>
+        <p>
+            <label for="Penyewa">Penyewa</label><br>
+            <input type="text" id="Penyewa" name="Penyewa" required>
+        </p>
+        <p>
+            <label for="sopir">Sopir</label><br>
+            <input type="text" id="sopir" name="sopir" required>
+        </p>
+        <p>
+            <label for="masa">Masa (Hari)</label><br>
+            <input type="number" id="masa" name="masa" min="1" placeholder="Contoh: 2" required>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</main>
 
-            <form id="form-tambah" method="post" action="proses_tambah.php">
-                <p>
-                    <label for="judul">Judul</label><br>
-                    <input type="text" id="judul" name="judul" required>
-                </p>
-                <p>
-                    <label for="pengarang">Pengarang</label><br>
-                    <input type="text" id="pengarang" name="pengarang" required>
-                </p>
-                <p>
-                    <label for="tahun">Tahun Terbit</label><br>
-                    <input type="number" id="tahun" name="tahun" min="1900" max="2026" required>
-                </p>
-                <p>
-                    <label for="isbn">ISBN</label><br>
-                    <input type="text" id="isbn" name="isbn">
-                </p>
-                <p>
-                    <label for="stok">Stok</label><br>
-                    <input type="number" id="stok" name="stok" min="0" required>
-                </p>
-                <p>
-                    <label for="kategori">Kategori</label><br>
-                    <select id="kategori" name="kategori">
-                        <option value="fiksi">Fiksi</option>
-                        <option value="non-fiksi">Non-Fiksi</option>
-                        <option value="referensi">Referensi</option>
-                    </select>
-                </p>
-                <p>
-                    <button type="submit">Simpan</button>
-                </p>
-            </form>
-        </section>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php 
+// Memanggil footer.php dari folder includes (naik 1 level)
+include '../includes/footer.php'; 
+?>

@@ -1,55 +1,55 @@
-<?php
-$page_title = "Daftar Buku";
-include __DIR__ . '/../includes/header.php';
-
-$flash = $_SESSION['flash'] ?? null;
-unset($_SESSION['flash']);
-$daftarBuku = $_SESSION['buku'] ?? [];
+<?php 
+include '../includes/header.php'; 
 ?>
-        <section>
-            <h2>Daftar Buku</h2>
 
-            <?php if ($flash): ?>   
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
-            <?php endif; ?>
+<main>
+    <section>
+        <h2>Daftar Mobil / Order</h2>
 
-            <div class="search-box">
-                <label for="search-input">Cari Judul Buku</label>
-                <input type="text" id="search-input" placeholder="Ketik judul buku...">
+        <!-- Tampilkan Pesan Flash jika Ada Error / Sukses -->
+        <?php if (isset($_SESSION['flash'])): ?>
+            <div class="alert" style="padding: 10px; margin-bottom: 15px; border: 1px solid #ccc;">
+                <?= htmlspecialchars($_SESSION['flash']['pesan']); ?>
             </div>
+            <?php unset($_SESSION['flash']); ?>
+        <?php endif; ?>
 
-            <div class="table-responsive">
+        <div class="search-box">
+            <label for="search-input">Cari Jenis Mobil</label>
+            <input type="text" id="search-input" placeholder="Ketik Jenis Mobil...">
+        </div>
+
+        <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>Judul</th>
-                        <th>Pengarang</th>
-                        <th>Tahun</th>
-                        <th>Stok</th>
-                        <th>Aksi</th>
+                        <th>Jenis</th>
+                        <th>Penyewa</th>
+                        <th>Sopir</th>
+                        <th>Masa (Hari)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (empty($daftarBuku)): ?>
-                    <tr>
-                        <td colspan="5">Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".</td>
-                    </tr>
-                    <?php else: ?>
-                        <?php foreach ($daftarBuku as $buku): ?>
-                        <tr>
-                            <td><?php echo $buku['judul']; ?></td>
-                            <td><?php echo $buku['pengarang']; ?></td>
-                            <td><?php echo $buku['tahun']; ?></td>
-                            <td><?php echo $buku['stok']; ?></td>
-                            <td>
-                                <button type="button">Edit</button>
-                                <button type="button" class="btn-hapus">Hapus</button>
-                            </td>
-                        </tr>
+                    <?php if (!empty($_SESSION['buku'])): ?>
+                        <?php foreach ($_SESSION['buku'] as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['jenis']); ?></td>
+                                <td><?= htmlspecialchars($item['penyewa']); ?></td>
+                                <td><?= htmlspecialchars($item['sopir']); ?></td>
+                                <td><?= htmlspecialchars($item['masa']); ?> Hari</td>
+                            </tr>
                         <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Belum ada data order.</td>
+                        </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
-            </div>
-        </section>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+        </div>
+    </section>
+</main>
+
+<?php 
+include '../includes/footer.php'; 
+?>

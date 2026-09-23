@@ -7,18 +7,25 @@
 
 body {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-    color: #070000;
-    background-color: #f5f6f8;
+    color: #e3bd8d;
+    background-color: #1e1a2d;
     line-height: 1.5;
 }
+
 header {
-    background-color:#61dd08 ;
-    color: #fff;
-    padding: 1rem, 1.5rem;
+    background-color: #81021f;
+    color: #e3bd8d;
+max-width: 1100px; /* <--- Ubah angka ini agar pas dengan konten di bawah */
+    
+    width: 100%;       /* Agar responsif saat layar mengecil */
+    margin: 20px auto; /* 'auto' di kiri-kanan membuat posisi selalu pas di tengah */
+    
+    box-sizing: border-box; /* Mencegah padding menambah lebar elemen */
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    border-radius: 8px;
 }
 
 header h1 {
@@ -30,13 +37,14 @@ header nav ul {
     display: flex;
     gap: 1.25rem;
 }
+
 header nav a {
-    color: #fff;
+    color: #e3bd8d;
     font-weight: 500;
 }
 
 a {
-    color: #61dd08;
+    color: #e3bd8d;
     text-decoration: none;
 }
 
@@ -44,85 +52,157 @@ a:hover {
     text-decoration: underline;
 }
 
-main{
+main {
     max-width: 1000px;
-    margin: 2rem auto;
+    margin: 3rem auto;
     padding: 0 1.5rem;
 }
-section{
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 0 1.5rem;
+
+section {
+    background-color: #81021f;
+    border-radius: 10px;
+    padding: 1.5rem;
     margin-bottom: 1.5rem
 }
-section h2{
+
+section h2 {
     margin-bottom: 1rem;
-    color: #1d5b8a;
+    color: #e3bd8d;
 }
-/* Kartu Statistik (CSS Grid) */
+
+/* Container Utama Ringkasan (Membagi Kiri & Kanan) */
 main section:nth-of-type(2) {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap : 1rem
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Membuat isi kolom kiri dan kanan rata tengah secara vertikal */
+    gap: 2rem;
+    padding: 1.5rem; /* Tambahkan padding jika menggunakan pembungkus merah */
 }
+
+/* Area Kiri: Teks & Judul */
+main section:nth-of-type(2) .ringkasan-info {
+    flex: 1; /* Mengambil proporsi ruang di sebelah kiri */
+}
+
+main section:nth-of-type(2) .ringkasan-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e3bd8d; /* Warna krem agar kontras dengan latar belakang merah */
+    margin-bottom: 0.5rem;
+}
+
+main section:nth-of-type(2) .ringkasan-info p {
+    font-size: 0.95rem;
+    color: #e3bd8d;
+    line-height: 1.4;
+}
+
+/* Area Kanan: Grid 2x2 untuk 4 Kartu */
+main section:nth-of-type(2) .ringkasan-cards {
+    flex: 1.5; /* Mengambil proporsi ruang lebih lebar di sebelah kanan */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Membagi kartu menjadi 2 kolom x 2 baris */
+    gap: 1rem;
+}
+
+/* Styling Kartu (Sesuai dengan CSS Asli Anda) */
 main section:nth-of-type(2) article {
-    background-color: #eef4fa;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e3bd8d;
+    border-radius: 3.9px;
     padding: 1.25rem;
+    color: #81021f;
     text-align: center;
 }
-main section:nth-of-type(2) article h3{
-    font-size: 0.95rem;
+
+main section:nth-of-type(2) article h3 {
+    font-size: 1rem; /* Ukuran disesuaikan agar muat di grid 2x2 */
     font-weight: 700;
-    color: #61dd08;
+    color: #81021f;
+    margin-bottom: 0.5rem;
 }
+
+main section:nth-of-type(2) article p {
+    font-size: 1.5rem; /* Ukuran angka diperbesar sedikit agar menonjol */
+    font-weight: 700;
+    color: #81021f;
+    margin: 0;
+}
+
+main section:nth-of-type(3) h3 {
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    font-weight: 700;
+    color: #e3bd8d;
+    text-align: center;
+}
+
+main section:nth-of-type(3) p {
+    font-size: 1rem;
+    padding: 0.2rem;
+    font-weight: 700;
+    color: #e3bd8d;
+    text-align: center;
+}
+
+main section:nth-of-type(3) {
+    background-color: #81021f;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
-th, td{
+
+th,
+td {
     text-align: left;
     padding: 0.65rem, 0.75rem;
     border-bottom: 1px solid #e2e6ea;
 }
-thead{
-    background-color:  #61dd08;
-    color: #fff;
+
+thead {
+    background-color: #81021f;
+    color: #e3bd8d;
 }
-tbody tr:nth-child(even){
-    background-color: #f7f9fb;
+
+tbody tr:nth-child(even) {
+    background-color: #1e1a2d;
 }
-tbody tr:hover{
+
+tbody tr:hover {
     background-color: #eef4fa;
 }
-td button{
+
+td button {
     padding: 0.35rem 0.7rem;
     margin-right: 0.35rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.55rem;
 }
-td button{
-    padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85rem;
-}
-td button:first-of-type{
+
+td button:first-of-type {
     background-color: #f0ad4e;
     color: #fff;
 }
-td button:last-of-type{
-    background-color:  #d9534f;
+
+td button:last-of-type {
+    background-color: #f50800;
     color: #fff;
 }
-.btn-detail{
-    background-color:  #04d300;
-    color: #fff;
+
+.btn-detail {
+    background-color: #81021f;
+    color: #e3bd8d;
 }
+
 /* ===== Form ===== */
 form p {
     margin-bottom: 1rem;
@@ -132,7 +212,7 @@ form label {
     display: block;
     margin-bottom: 0.35rem;
     font-weight: 600;
-    color: #444;
+    color: #e3bd8d;
 }
 
 form input,
@@ -146,8 +226,8 @@ form select {
 }
 
 form button[type="submit"] {
-    background-color: #61dd08;
-    color: #fff;
+    background-color: #81021f;
+    color: #e3bd8d;
     border: none;
     padding: 0.6rem 1.5rem;
     border-radius: 4px;
@@ -156,50 +236,60 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #61dd08;
+    background-color: #81021f;
 }
+
 footer {
     text-align: center;
     padding: 1.25rem;
     color: #7a8794;
     font-size: 0.9rem;
 }
+
 @media (max-width: 768px) {
-     main section:nth-of-type(2) {
+    main section:nth-of-type(2) {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 .nav-toggle-label {
     display: none;
     font-size: 1.6rem;
-    color: #fff;
+    color: #e3bd8d;
     background: none;
     border: none;
     cursor: pointer;
 }
+
 @media (max-width: 480px) {
     header {
         position: relative;
     }
-
+    
     .nav-toggle-label {
         display: block;
     }
-
+    main section:nth-of-type(2) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap : 1rem
+    }
+    
     header nav {
         display: none;
         width: 100%;
         order: 3;
         margin-top: 1rem;
     }
-
+    
     header nav.nav-open {
         display: block;
     }
-
+    
     header nav ul {
         flex-direction: column;
         gap: 0.75rem;
+        text-align: right;
     }
 
     main section:nth-of-type(2) {
@@ -211,51 +301,19 @@ footer {
         max-width: 100%;
     }
 }
+
 .table responsive {
-    overflow-x: auto;   
+    overflow-x: auto;
 }
-/* Breakpoint baru */
-@media (min-width: 1800px){
-    main {
-        max-width: 100% !important;
-        width: 100%;
-        margin: 1.5rem 0;
-        padding: 0 2rem;
-    }
-    section {
-        padding: 1.5rem 2rem;
-        width: 100%;
-    }
-    body {
-    font-size: 2.15rem !important; /* Memperbesar ukuran dasar teks di seluruh halaman */
-    line-height: 1.6;
-}
-h1{
-    font-size: 5.2rem !important;
-    margin-bottom: 10px;
-}
-h3{
-    font-size: 3.2rem !important;
-    margin-bottom: 10px;
-}
-nav{
-    font-size: 3.2rem !important;
-    margin-bottom: 10px;
-}
-section{
-    background-color: #fff;
-    font-size: 3.2rem !important;
-    border-radius: 8px;
-    padding: 30 1.5rem;
-    margin-bottom: 1.5rem
-}
-}
+
+
 .error {
     display: block;
     color: #d9534f;
     font-size: 0.85rem;
     margin-top: 0.25rem;
 }
+
 .search-box {
     margin-bottom: 1rem;
 }
@@ -266,21 +324,4 @@ section{
     padding: 0.5rem 0.75rem;
     border: 1px solid #cdd4da;
     border-radius: 4px;
-}
-/* ===== Flash Message ===== */
-.flash {
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    font-weight: 500;
-}
-
-.flash-success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.flash-error {
-    background-color: #f8d7da;
-    color: #721c24;
 }
