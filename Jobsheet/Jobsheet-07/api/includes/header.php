@@ -21,12 +21,12 @@ if (getenv('VERCEL')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIMPUS-Mini<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
+    <title>RENTAL MOBIL<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
     <link rel="stylesheet" href="<?php echo $base; ?>../public/assets/css/style.css">
 </head>
 <body>
     <header>
-        <h1>SIMPUS-Mini</h1>
+        <h1>RENTAL MOBIL</h1>
         <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
         <nav>
             <ul>
