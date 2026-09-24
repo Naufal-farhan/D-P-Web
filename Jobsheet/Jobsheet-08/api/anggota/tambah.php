@@ -1,6 +1,6 @@
 <?php 
 // Memanggil header.php dari folder includes (naik 1 level)
-include '../includes/header.php'; 
+include __DIR__ . '../includes/header.php'; 
 ?>
 
 <main>
@@ -45,5 +45,5 @@ include '../includes/header.php';
 
 <?php 
 // Memanggil footer.php dari folder includes (naik 1 level)
-include '../includes/footer.php'; 
+include __DIR__ . '../includes/footer.php'; 
 ?>

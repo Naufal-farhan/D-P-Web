@@ -4,7 +4,7 @@ require __DIR__ . '/../includes/koneksi.php';
 // Ambil data dari database (disesuaikan nama variabelnya)
 $rentalMobil_db = $pdo->query("SELECT * FROM order_rental ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-include '../includes/header.php'; 
+include __DIR__ .'../includes/header.php'; 
 ?>
 
 <main>
@@ -56,5 +56,5 @@ include '../includes/header.php';
 </main>
 
 <?php 
-include '../includes/footer.php'; 
+include __DIR__ .'../includes/footer.php'; 
 ?>
