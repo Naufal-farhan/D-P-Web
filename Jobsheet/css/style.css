@@ -1,0 +1,427 @@
+/* ==========================================================
+   JOBSHEET - style.css
+   PHASE 5 (+fix v4): color palette dirombak total (warm dark
+   editorial), animasi hover diganti dari translateX (gap di
+   tepi kiri) menjadi width-extend (tanpa gap), background
+   khusus untuk foto bunga transparan ditambahkan, shadow 3D
+   diperbesar & diperdalam. Fix bug kritis: :root selector
+   yang sempat hilang saat edit sebelumnya.
+========================================================== */
+
+/* ----------------------------------------------------------
+   CSS VARIABLES
+   Semua parameter visual penting dipusatkan di sini supaya
+   mudah diedit tanpa perlu memahami seluruh CSS.
+---------------------------------------------------------- */
+:root {
+  /* ----------------------------------------------------------
+     COLOR PALETTE
+     Palet dirancang supaya semua elemen (background, tombol,
+     pill, accent) terasa satu keluarga warna - dark editorial
+     dengan sedikit undertone hangat, bukan abu netral generik.
+  ---------------------------------------------------------- */
+
+  /* Warna dasar - hitam pekat dengan sedikit undertone hangat
+     (bukan hitam murni #000, supaya terasa lebih "cinematic"
+     dan menyatu dengan glow oren di background) */
+  --color-bg: #0a0808;
+  --color-text: #f5f0ec;
+
+  /* Warna tombol - charcoal gelap dengan undertone hangat
+     (bukan abu netral #3a3a3a), supaya menyatu dengan
+     background dan tidak terasa "menempel" begitu saja */
+  --color-btn-bg: #2b2624;
+
+  /* Pill putih - off-white hangat (bukan putih murni), supaya
+     tidak terlalu kontras/silau di atas background gelap */
+  --color-btn-inner: #f2ece4;
+
+  /* Accent oren - condong ke ember/coral yang lebih dalam,
+     bukan oren "safety cone" yang terlalu cerah/plastik */
+  --color-btn-accent: #e85d34;
+
+  /* Background pengganti untuk foto bunga transparan saat
+     hover - warna hangat gelap (bukan oren solid penuh) agar
+     foto tanpa background tetap menyatu dengan tema, dan
+     kontras cukup supaya bunga tetap terlihat jelas */
+  --color-image-bg: #3d1f14;
+
+  /* Glow - diselaraskan dengan accent oren/ember yang baru */
+  --glow-color-1: rgba(232, 93, 52, 0.4);    /* ember glow */
+  --glow-color-2: rgba(120, 40, 70, 0.28);   /* deep wine glow */
+
+  /* Layout */
+  --right-area-width: 34%;
+  --left-panel-width: 66%;
+  --page-padding-y: 40px;
+  --page-padding-right: 40px;
+
+  /* Tipografi */
+  --font-main: 'Helvetica Neue', Arial, sans-serif;
+  --identity-title-size: clamp(32px, 4vw, 56px);
+  --identity-name-size: clamp(16px, 1.6vw, 22px);
+  --identity-class-size: clamp(11px, 1vw, 13px);
+  --active-title-size: clamp(18px, 2vw, 28px);
+
+  /* Ukuran tombol
+     Tinggi dihitung dari viewport height agar HANYA sekitar
+     5-6 tombol yang terlihat sekaligus tanpa scroll (sesuai
+     gambar referensi) - sisanya diakses lewat scroll panel
+     kiri. Menaikkan nilai vh/min/max ini akan mengurangi
+     jumlah tombol yang terlihat sekaligus, begitu pula
+     sebaliknya. */
+  --btn-height: 15.5vh;
+  --btn-min-height: 110px;
+  --btn-max-height: 170px;
+  --btn-gap: 20px;
+  --btn-radius: 999px;
+  --btn-number-size: clamp(40px, 5vh, 60px);
+  /* Jarak tumpuk antar tombol - negatif berarti tombol berikutnya
+     ditarik naik menutupi bagian bawah tombol sebelumnya, sehingga
+     tidak ada jarak/gap terlihat dan bayangan 3D tombol bawah
+     yang lebih pendek akan tersembunyi di belakang tombol atas. */
+  --btn-overlap: -18px;
+
+  /* Lebar tombol bervariasi (pola berulang tiap 4 tombol),
+     sesuai gambar referensi: pendek, sedang, panjang, sedang.
+     Persentase dari lebar penuh panel kiri. Versi "-hover"
+     sedikit lebih besar - dipakai saat tombol aktif supaya
+     terasa "memanjang ke kanan" dari titik tetap di kiri,
+     tanpa geser (translateX) yang meninggalkan celah di
+     tepi kiri layar. */
+  --btn-width-short: 44%;
+  --btn-width-short-hover: 47%;
+  --btn-width-medium: 64%;
+  --btn-width-medium-hover: 67%;
+  --btn-width-long: 88%;
+  --btn-width-long-hover: 91%;
+  --btn-width-medium2: 72%;
+  --btn-width-medium2-hover: 75%;
+
+  /* Pill di dalam tombol - hampir memenuhi tombol abu,
+     menyisakan ruang di kanan untuk angka. Margin atas/bawah
+     dibuat lebih lega dari sebelumnya, dan pill punya border
+     gelap tipis mengelilinginya. */
+  --pill-width: 78%;
+  --pill-margin-y: 14px;
+  --pill-border: 2px solid rgba(0, 0, 0, 0.45);
+
+  /* Bayangan 3D di ATAS tombol abu (bukan di bawah) - terlihat
+     seperti lapisan kedua yang menjorok ke atas. Dibuat lebih
+     dalam & lebih tebal (offset dan blur besar) supaya efek
+     "terangkat"-nya terasa jelas, dengan spread negatif kecil
+     agar tidak menutupi tombol lain di atasnya. */
+  --btn-shadow-3d: 0 -22px 30px -8px rgba(245, 240, 236, 0.6);
+
+  /* Animasi (dipakai lagi di Phase 4) */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.35s ease;
+  --transition-hover: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fill: 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ----------------------------------------------------------
+   RESET DASAR
+---------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------------
+   HTML & BODY
+   Wajib: full viewport, TIDAK BISA discroll sama sekali.
+---------------------------------------------------------- */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+/* Subtle cinematic glow di sudut kanan, muncul di belakang konten */
+body {
+  background-image:
+    radial-gradient(circle at 88% 15%, var(--glow-color-1), transparent 40%),
+    radial-gradient(circle at 95% 55%, var(--glow-color-2), transparent 45%);
+  background-repeat: no-repeat;
+}
+
+/* ----------------------------------------------------------
+   PAGE WRAPPER
+   Membagi layar menjadi 2 kolom: left panel & right area
+---------------------------------------------------------- */
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: var(--page-padding-y) var(--page-padding-right) var(--page-padding-y) 0;
+}
+
+/* ----------------------------------------------------------
+   LEFT PANEL (jobsheet list)
+   Satu-satunya area yang boleh scroll (vertical only).
+---------------------------------------------------------- */
+.jobsheet-panel {
+  width: var(--left-panel-width);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Scrollbar minimal/invisible */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge lama */
+}
+
+.jobsheet-panel::-webkit-scrollbar {
+  display: none;                /* Chrome/Safari/Edge modern */
+}
+
+.jobsheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* Tombol ditumpuk tanpa jarak (efek kartu bertumpuk) - lihat
+     margin-top negatif & z-index pada .jobsheet-btn di bawah.
+     Padding atas: ruang untuk bayangan 3D tombol pertama yang
+     mengarah ke atas. Padding kanan: ruang aman untuk glow
+     saat hover. Padding bawah: sedikit napas di akhir list. */
+  padding: 30px 24px 10px 0;
+}
+
+/* ----------------------------------------------------------
+   RIGHT AREA (identity + active title)
+   Statis, tidak scroll.
+---------------------------------------------------------- */
+.right-area {
+  width: var(--right-area-width);
+  height: 100%;
+  position: relative;
+}
+
+/* Identitas - pojok kanan atas */
+.identity {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+.identity-title {
+  font-size: var(--identity-title-size);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.identity-name {
+  margin-top: 10px;
+  font-size: var(--identity-name-size);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.identity-class {
+  margin-top: 4px;
+  font-size: var(--identity-class-size);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-btn-accent);
+}
+
+/* Judul dinamis - pojok kanan bawah */
+.active-title {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: var(--active-title-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: right;
+
+  /* Disiapkan untuk fade in/out di Phase 4 */
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+}
+
+.active-title.is-visible {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------
+   JOBSHEET BUTTON (bentuk dasar)
+   - dark gray pill sebagai body tombol, dengan bayangan 3D
+     putih di ATAS-nya (efek lapisan kedua menjorok ke atas)
+   - di dalamnya: pill polos hampir memenuhi tombol,
+     menyisakan ruang di kanan untuk angka
+   - saat NORMAL: pill tetap putih polos (tidak ada gambar)
+   - saat HOVER: tombol memanjang sedikit ke kanan (bukan
+     geser, supaya tidak meninggalkan gap di tepi kiri), pill
+     di dalamnya "tersapu" warna orange dari kiri ke kanan
+     lalu berganti jadi warna latar khusus untuk foto bunga,
+     sambil foto bunga fade-in bersamaan
+---------------------------------------------------------- */
+.jobsheet-btn {
+  display: flex;
+  align-items: center;
+  width: var(--btn-width-medium); /* default fallback jika class lebar tidak dipasang */
+  height: clamp(var(--btn-min-height), var(--btn-height), var(--btn-max-height));
+  border: none;
+  /* Rata di sisi kiri (menyatu dengan tepi layar), melengkung
+     hanya di sisi kanan - sesuai gambar referensi */
+  border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+  background-color: var(--color-btn-bg);
+  cursor: pointer;
+  padding: 0 36px 0 0;
+  flex-shrink: 0;
+  position: relative;
+  box-sizing: border-box;
+
+  /* Efek tumpuk (stacked/overlap) - setiap tombol ditarik naik
+     menutupi bagian bawah tombol sebelumnya. Nilai ini harus
+     >= ketebalan bayangan 3D supaya bayangan tombol sebelumnya
+     benar-benar tertutup oleh tombol berikutnya. */
+  margin-top: var(--btn-overlap);
+
+  /* Bayangan 3D putih di ATAS tombol (lapisan kedua menjorok
+     ke atas). Spread negatif menjaga lebar bayangan agar
+     tidak menutupi tombol berikutnya di atasnya. */
+  box-shadow: var(--btn-shadow-3d);
+
+  transition: box-shadow var(--transition-hover),
+              width var(--transition-hover);
+}
+
+/* Tombol pertama tidak perlu ditarik naik (tidak ada tombol
+   sebelumnya untuk ditumpuki) */
+.jobsheet-btn:first-child {
+  margin-top: 0;
+}
+
+/* Tombol yang datang lebih belakangan (lebih ke bawah dalam
+   daftar) harus punya z-index LEBIH RENDAH, supaya saat
+   tombol tersebut lebih pendek dari tombol di atasnya,
+   bayangan 3D-nya otomatis tertutup oleh tombol di atas.
+   Dipasang oleh JS lewat inline style z-index. */
+
+/* Modifier lebar - dipasang oleh JS secara berpola (short, medium,
+   long, medium2, berulang tiap 4 tombol) supaya tampilan bertingkat
+   seperti gambar referensi. Ubah persentase di CSS variables di atas
+   untuk menyesuaikan proporsi. */
+.jobsheet-btn.w-short   { width: var(--btn-width-short); }
+.jobsheet-btn.w-medium  { width: var(--btn-width-medium); }
+.jobsheet-btn.w-long    { width: var(--btn-width-long); }
+.jobsheet-btn.w-medium2 { width: var(--btn-width-medium2); }
+
+/* Saat hover, tombol memanjang sedikit ke kanan (bukan geser)
+   dari titik tetap di tepi kiri - jadi tidak pernah lepas
+   dari tepi layar dan tidak meninggalkan celah. */
+.jobsheet-btn.w-short.is-active   { width: var(--btn-width-short-hover); }
+.jobsheet-btn.w-medium.is-active  { width: var(--btn-width-medium-hover); }
+.jobsheet-btn.w-long.is-active    { width: var(--btn-width-long-hover); }
+.jobsheet-btn.w-medium2.is-active { width: var(--btn-width-medium2-hover); }
+
+/* Pill putih - hampir memenuhi tombol abu (menyisakan ruang
+   kanan untuk angka), dengan border gelap tipis mengelilingi.
+   Margin atas/bawah dibuat lega agar terlihat jelas terpisah
+   dari tepi tombol abu (sesuai gambar referensi).
+
+   Teknik sweep-fill: .jobsheet-btn__pill adalah dasar putih
+   polos (warna tetap, tidak pernah berubah). Di atasnya ada
+   .jobsheet-btn__pill-fill, sebuah overlay oren yang lebarnya
+   0% saat normal dan melebar ke 100% saat hover - sehingga
+   terlihat seperti "mengisi dari kiri ke kanan". Foto bunga
+   berada di lapisan paling atas, fade-in bersamaan. */
+.jobsheet-btn__pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+
+  width: var(--pill-width);
+  height: calc(100% - (var(--pill-margin-y) * 2));
+  margin: var(--pill-margin-y) 0;
+
+  border: var(--pill-border);
+  border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+
+  /* Dasar pill SELALU putih - warna ini tidak pernah diubah */
+  background-color: var(--color-btn-inner);
+}
+
+/* Overlay - mengisi dari kiri ke kanan saat hover. Warnanya
+   oren accent (efek sweep awal), lalu begitu tombol sedang
+   aktif, berubah jadi warna khusus (--color-image-bg) yang
+   berfungsi sebagai latar untuk foto bunga TRANSPARAN (PNG
+   tanpa background) yang akan ditumpuk di atasnya - supaya
+   foto tetap terlihat menyatu dengan tema, bukan mengambang
+   di atas putih/oren polos. */
+.jobsheet-btn__pill-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%; /* normal: overlay tidak terlihat sama sekali */
+  background-color: var(--color-btn-accent);
+
+  transition: width var(--transition-fill),
+              background-color var(--transition-fill);
+}
+
+.jobsheet-btn.is-active .jobsheet-btn__pill-fill {
+  width: 100%; /* hover: overlay melebar penuh menutupi pill putih */
+  background-color: var(--color-image-bg);
+}
+
+/* Angka - rata kanan, di ruang kosong setelah pill */
+.jobsheet-btn__number {
+  margin-left: auto;
+  font-size: var(--btn-number-size);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+/* Foto bunga - lapisan paling atas di dalam pill. Tersembunyi
+   saat normal, fade-in bersamaan dengan overlay melebar saat
+   hover. Dirancang untuk PNG transparan: object-fit "contain"
+   dipakai (bukan "cover") supaya bunga terlihat utuh di atas
+   warna latar --color-image-bg, bukan terpotong/di-crop. */
+.jobsheet-btn__image {
+  position: relative;
+  z-index: 1; /* di atas overlay */
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  opacity: 0;
+
+  transition: opacity var(--transition-fill);
+}
+
+.jobsheet-btn.is-active .jobsheet-btn__image {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------
+   STATE: is-active
+   Dipasang/dilepas oleh JS saat mouseenter/mouseleave.
+   Tombol memanjang sedikit ke kanan (lihat rule width per
+   varian di atas) + glow tambahan. Pill di dalamnya terisi
+   warna orange lewat efek sweep, foto bunga muncul bersamaan
+   (diatur di .jobsheet-btn__pill dan .jobsheet-btn__image
+   masing-masing di atas).
+---------------------------------------------------------- */
+.jobsheet-btn.is-active {
+  box-shadow: var(--btn-shadow-3d), 0 0 32px var(--glow-color-1);
+  /* z-index saat aktif diatur lewat JS (bukan di sini), karena
+     setiap tombol sudah punya z-index dasar sebagai inline
+     style, dan inline style selalu menang atas class CSS. */
+}
