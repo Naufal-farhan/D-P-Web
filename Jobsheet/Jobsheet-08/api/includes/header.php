@@ -1,18 +1,15 @@
 <?php
 session_start();
 
-// Prefix relatif ke root proyek ini (bukan root domain) — supaya
-// /assets, /index.php, dst tetap benar walau proyek diakses lewat
-// subfolder (mis. dp2026.test/kode-praktikum/jobsheet-07/), bukan cuma
-// lewat vhost yang document root-nya langsung folder ini.
-
 if (getenv('VERCEL')) {
     $base = '/';
+    $assetBase = '/assets/';
 } else {
     $__jobsheetRoot = dirname(__DIR__);
     $__scriptDir = dirname($_SERVER['SCRIPT_FILENAME']);
     $__rel = ltrim(str_replace('\\', '/', substr($__scriptDir, strlen($__jobsheetRoot))), '/');
     $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
+    $assetBase = $base . 'public/assets/';
 }
 
 ?>
@@ -22,7 +19,7 @@ if (getenv('VERCEL')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RENTAL MOBIL<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
-    <link rel="stylesheet" href="<?php echo $base; ?>../public/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $assetBase; ?>css/style.css">
 </head>
 <body>
     <header>
