@@ -24,8 +24,12 @@
       "dest": "/api/anggota/$1"
     },
     {
-      "src": "/",
-      "dest": "/api/buku/list.php"
+      "src": "/includes/(.*)",
+      "dest": "/api/includes/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
     }
   ]
 }
