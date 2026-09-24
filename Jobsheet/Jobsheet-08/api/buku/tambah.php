@@ -1,6 +1,6 @@
 <?php 
 // Naik 2 level: dari api/buku/ ke root project
-include __DIR__ . '../includes/header.php'; 
+include __DIR__ . '/../includes/header.php'; 
 ?>
 
 <main>
@@ -28,5 +28,5 @@ include __DIR__ . '../includes/header.php';
 </main>
 
 <?php 
-include __DIR__ . '../includes/footer.php'; 
+include __DIR__ . '/../includes/footer.php'; 
 ?>
