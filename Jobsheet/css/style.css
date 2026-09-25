@@ -104,7 +104,7 @@
      gelap tipis mengelilinginya. */
   --pill-width: 78%;
   --pill-margin-y: 14px;
-  --pill-border: 2px solid rgba(0, 0, 0, 0.45);
+  --pill-border: none;
 
   /* Bayangan 3D di ATAS tombol abu (bukan di bawah) - terlihat
      seperti lapisan kedua yang menjorok ke atas. Dibuat lebih
@@ -187,10 +187,11 @@ body {
   gap: 0;
   /* Tombol ditumpuk tanpa jarak (efek kartu bertumpuk) - lihat
      margin-top negatif & z-index pada .jobsheet-btn di bawah.
-     Padding atas: ruang untuk bayangan 3D tombol pertama yang
-     mengarah ke atas. Padding kanan: ruang aman untuk glow
-     saat hover. Padding bawah: sedikit napas di akhir list. */
-  padding: 30px 24px 10px 0;
+     Padding atas & bawah dibuat cukup lebar (>= jangkauan
+     visual bayangan 3D: offset 22px + blur 30px) supaya
+     shadow tombol pertama dan terakhir tidak terpotong oleh
+     batas panel. Padding kanan: ruang aman untuk glow hover. */
+  padding: 56px 24px 40px 0;
 }
 
 /* ----------------------------------------------------------
@@ -390,17 +391,21 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Foto bunga - lapisan paling atas di dalam pill. Tersembunyi
-   saat normal, fade-in bersamaan dengan overlay melebar saat
-   hover. Dirancang untuk PNG transparan: object-fit "contain"
-   dipakai (bukan "cover") supaya bunga terlihat utuh di atas
-   warna latar --color-image-bg, bukan terpotong/di-crop. */
+/* Foto bunga - lapisan paling atas di dalam pill, memenuhi
+   seluruh area pill (bukan mengambang kecil di tengah).
+   object-fit: cover supaya foto selalu memenuhi ruang tanpa
+   distorsi. Untuk foto PNG transparan, --color-image-bg pada
+   pill-fill di bawahnya tetap berfungsi sebagai fallback di
+   sisa area transparan (jika ada). Tersembunyi saat normal,
+   fade-in bersamaan dengan overlay melebar saat hover. */
 .jobsheet-btn__image {
-  position: relative;
+  position: absolute;
   z-index: 1; /* di atas overlay */
-  width: 85%;
-  height: 85%;
-  object-fit: contain;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
 
   transition: opacity var(--transition-fill);
