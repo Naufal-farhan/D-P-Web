@@ -9,6 +9,20 @@
 <body>
 
   <!-- ==========================================
+       START OVERLAY
+       Menutupi seluruh layar saat halaman pertama kali
+       dibuka. Klik di sini menghitung sebagai interaksi
+       pertama pengguna, sehingga browser mengizinkan audio
+       diputar untuk seluruh sisa sesi (lihat setupAudioUnlock
+       di js/main.js). Overlay ini hilang setelah diklik.
+  =========================================== -->
+  <div class="start-overlay" id="startOverlay">
+    <button class="start-overlay__btn" id="startOverlayBtn" type="button">
+      KLIK UNTUK MULAI
+    </button>
+  </div>
+
+  <!-- ==========================================
        MAIN WRAPPER
        Membungkus seluruh halaman (tidak scroll)
   =========================================== -->

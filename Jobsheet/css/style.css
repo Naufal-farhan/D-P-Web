@@ -1,11 +1,13 @@
 /* ==========================================================
    JOBSHEET - style.css
-   PHASE 5 (+fix v4): color palette dirombak total (warm dark
-   editorial), animasi hover diganti dari translateX (gap di
-   tepi kiri) menjadi width-extend (tanpa gap), background
-   khusus untuk foto bunga transparan ditambahkan, shadow 3D
-   diperbesar & diperdalam. Fix bug kritis: :root selector
-   yang sempat hilang saat edit sebelumnya.
+   Website statis interaktif "JOBSHEET cover" - Naufal Farhan
+   Nur Ramadhan, TI-2D.
+
+   PHASE 6 (final): responsive (tablet & mobile), accessibility
+   (focus-visible untuk navigasi keyboard), dan cleanup akhir.
+   Struktur, warna, ukuran, dan animasi semuanya diatur lewat
+   CSS variables di :root supaya mudah diedit tanpa perlu
+   memahami seluruh file ini.
 ========================================================== */
 
 /* ----------------------------------------------------------
@@ -113,7 +115,7 @@
      agar tidak menutupi tombol lain di atasnya. */
   --btn-shadow-3d: 0 -22px 30px -8px rgba(245, 240, 236, 0.6);
 
-  /* Animasi (dipakai lagi di Phase 4) */
+  /* Animasi */
   --transition-fast: 0.2s ease;
   --transition-medium: 0.35s ease;
   --transition-hover: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -246,7 +248,8 @@ body {
   text-transform: uppercase;
   text-align: right;
 
-  /* Disiapkan untuk fade in/out di Phase 4 */
+  /* Tersembunyi secara default, muncul (fade in) saat salah
+     satu tombol jobsheet sedang aktif (hover/fokus) */
   opacity: 0;
   transition: opacity var(--transition-medium);
 }
@@ -429,4 +432,160 @@ body {
   /* z-index saat aktif diatur lewat JS (bukan di sini), karena
      setiap tombol sudah punya z-index dasar sebagai inline
      style, dan inline style selalu menang atas class CSS. */
+}
+
+/* ----------------------------------------------------------
+   ACCESSIBILITY: focus-visible
+   Outline muncul HANYA saat tombol difokus lewat keyboard
+   (Tab), bukan saat diklik mouse - supaya pengguna mouse
+   tidak melihat outline yang tidak perlu, tapi pengguna
+   keyboard tetap punya penanda visual yang jelas tombol
+   mana yang sedang aktif/terfokus.
+---------------------------------------------------------- */
+.jobsheet-btn:focus-visible {
+  outline: 3px solid var(--color-btn-accent);
+  outline-offset: 4px;
+}
+
+/* ----------------------------------------------------------
+   START OVERLAY
+   Menutupi seluruh layar saat halaman pertama kali dibuka.
+   Klik di sini adalah interaksi pertama pengguna yang
+   "membuka kunci" audio browser (lihat setupAudioUnlock di
+   js/main.js), sehingga sound effect hover bisa langsung
+   bekerja untuk seluruh sisa sesi. Dihilangkan (fade out lalu
+   display:none) setelah diklik lewat class "is-hidden".
+---------------------------------------------------------- */
+.start-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000; /* di atas seluruh konten halaman */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--glow-color-1), transparent 55%);
+
+  opacity: 1;
+  transition: opacity var(--transition-hover);
+}
+
+.start-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none; /* supaya tidak menghalangi klik ke konten di baliknya saat fade out */
+}
+
+.start-overlay__btn {
+  padding: 20px 48px;
+  border: 2px solid var(--color-btn-accent);
+  border-radius: var(--btn-radius);
+  background-color: transparent;
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  transition: background-color var(--transition-hover),
+              color var(--transition-hover),
+              box-shadow var(--transition-hover);
+}
+
+.start-overlay__btn:hover {
+  background-color: var(--color-btn-accent);
+  color: var(--color-bg);
+  box-shadow: 0 0 40px var(--glow-color-1);
+}
+
+.start-overlay__btn:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   Prioritas utama tetap desktop/laptop (sesuai spek awal),
+   tapi tablet dan mobile tetap didukung supaya layout tidak
+   rusak/overflow di layar sempit. Struktur dasar (2 kolom,
+   panel kiri scroll, kanan statis, halaman tidak scroll)
+   TETAP DIPERTAHANKAN di semua ukuran layar - hanya proporsi,
+   ukuran, dan spacing yang disesuaikan.
+========================================================== */
+
+/* ----------------------------------------------------------
+   TABLET (potret maupun lanskap sempit)
+   Kolom kanan diperlebar sedikit relatif supaya teks
+   identitas tidak terlalu sempit, dan ukuran tombol/pill
+   dikecilkan proporsional. Padding kanan-kiri diperkecil.
+---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --left-panel-width: 60%;
+    --right-area-width: 40%;
+    --page-padding-y: 28px;
+    --page-padding-right: 28px;
+
+    --btn-height: 13vh;
+    --btn-min-height: 90px;
+    --btn-max-height: 140px;
+    --btn-number-size: clamp(32px, 4.5vh, 48px);
+    --pill-width: 72%;
+
+    --identity-title-size: clamp(26px, 4.5vw, 44px);
+    --active-title-size: clamp(15px, 2.2vw, 22px);
+  }
+
+  .jobsheet-btn {
+    padding-right: 24px;
+  }
+}
+
+/* ----------------------------------------------------------
+   MOBILE (layar sempit, biasanya potret)
+   Karena ruang sangat terbatas, kolom kanan (identitas) dan
+   kiri (tombol) dibuat sama-sama lebih ringkas. Tombol jadi
+   lebih pendek, angka lebih kecil, pill tetap proporsional.
+   Struktur 2 kolom TETAP dipertahankan (bukan ditumpuk jadi 1
+   kolom vertikal) supaya konsep visual jobsheet cover tetap
+   konsisten dengan desktop, hanya lebih ringkas.
+---------------------------------------------------------- */
+@media (max-width: 640px) {
+  :root {
+    --left-panel-width: 58%;
+    --right-area-width: 42%;
+    --page-padding-y: 16px;
+    --page-padding-right: 16px;
+
+    --btn-height: 11vh;
+    --btn-min-height: 64px;
+    --btn-max-height: 100px;
+    --btn-gap: 0;
+    --btn-overlap: -10px;
+    --btn-number-size: clamp(20px, 5vh, 32px);
+    --pill-width: 68%;
+    --pill-margin-y: 8px;
+
+    --identity-title-size: clamp(18px, 6vw, 30px);
+    --identity-name-size: clamp(10px, 2.8vw, 14px);
+    --identity-class-size: 9px;
+    --active-title-size: clamp(11px, 3.5vw, 16px);
+
+    --btn-shadow-3d: 0 -10px 14px -4px rgba(245, 240, 236, 0.55);
+  }
+
+  .jobsheet-btn {
+    padding-right: 16px;
+  }
+
+  .jobsheet-list {
+    padding: 28px 12px 20px 0;
+  }
+
+  .start-overlay__btn {
+    padding: 14px 28px;
+  }
 }

@@ -1,10 +1,18 @@
 /* ==========================================================
    JOBSHEET - main.js
-   PHASE 5 (+fix v4): audio unlock mechanism ditambahkan agar
-   sound siap secepat mungkin setelah interaksi pertama
-   pengguna (catatan: browser tetap mewajibkan minimal satu
-   interaksi sebelum audio apa pun bisa diputar - ini
-   kebijakan browser, bukan sesuatu yang bisa dilewati kode).
+   Website statis interaktif "JOBSHEET cover" - Naufal Farhan
+   Nur Ramadhan, TI-2D.
+
+   PHASE 6 (final): dukungan navigasi keyboard (focus/blur
+   disatukan dengan logika hover mouse), aria-label & alt text
+   untuk accessibility, cleanup komentar.
+
+   CATATAN AUDIO: semua browser modern memblokir autoplay
+   audio sampai pengguna melakukan minimal satu interaksi di
+   halaman - ini kebijakan browser, bukan bug. Overlay "KLIK
+   UNTUK MULAI" (lihat setupStartOverlay) berfungsi sebagai
+   interaksi wajib pertama itu, supaya sound effect hover bisa
+   langsung bekerja sejak awal untuk sisa sesi.
 ========================================================== */
 
 /* ----------------------------------------------------------
@@ -40,6 +48,7 @@ const jobsheets = [
   { number: "15", title: "JUDUL JOBSHEET 15", link: "Jobsheet-15/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" }
 ];
 
+
 /* ----------------------------------------------------------
    POLA LEBAR TOMBOL
    Menentukan variasi panjang-pendek tombol secara berulang
@@ -58,13 +67,9 @@ const widthPattern = ["w-short", "w-medium", "w-long", "w-medium2"];
    Membuat tombol secara dinamis dari array `jobsheets` dan
    memasukkannya ke dalam #jobsheetList.
 
-   Struktur tombol yang dihasilkan sama persis dengan sample
-   button yang dipakai di Phase 2, supaya styling CSS yang
-   sudah ada tetap berlaku tanpa perubahan.
-
    data-* attribute (number, title, link, image, sound)
    disematkan di setiap tombol agar bisa dipakai oleh
-   event hover/klik pada Phase 4 dan Phase 5.
+   event hover/fokus/klik.
 ---------------------------------------------------------- */
 function renderJobsheetButtons() {
   const list = document.getElementById("jobsheetList");
@@ -88,6 +93,11 @@ function renderJobsheetButtons() {
     btn.dataset.image = item.image;
     btn.dataset.sound = item.sound;
 
+    // Aria-label supaya pembaca layar (screen reader) dan
+    // navigasi keyboard bisa memahami tujuan tombol ini,
+    // meski secara visual hanya menampilkan angka.
+    btn.setAttribute("aria-label", `Jobsheet ${item.number}: ${item.title}`);
+
     // z-index menurun untuk tombol yang lebih ke bawah, supaya
     // tombol di atas selalu tumpang tindih (menutupi bayangan
     // 3D) tombol di bawahnya saat tombol bawah lebih pendek.
@@ -96,7 +106,7 @@ function renderJobsheetButtons() {
     btn.innerHTML = `
       <span class="jobsheet-btn__pill">
         <span class="jobsheet-btn__pill-fill"></span>
-        <img class="jobsheet-btn__image" src="${item.image}" alt="" />
+        <img class="jobsheet-btn__image" src="${item.image}" alt="Foto untuk ${item.title}" />
       </span>
       <span class="jobsheet-btn__number">${item.number}</span>
     `;
@@ -106,31 +116,31 @@ function renderJobsheetButtons() {
 }
 
 /* ----------------------------------------------------------
-   AUDIO UNLOCK
+   START OVERLAY
    CATATAN PENTING: semua browser modern (Chrome, Firefox,
    Safari) MEMBLOKIR autoplay audio sampai pengguna melakukan
-   minimal SATU interaksi (klik/tap/keydown) di halaman. Ini
-   kebijakan keamanan browser, bukan bug - tidak bisa dilewati
-   sepenuhnya dari kode.
+   minimal SATU interaksi (klik/tap) di halaman. Ini kebijakan
+   keamanan browser, bukan bug - tidak bisa dilewati sepenuhnya
+   dari kode.
 
-   Supaya sound effect terasa "langsung aktif" secepat mungkin
-   (bukan baru bekerja setelah pengguna kebetulan berinteraksi
-   dengan elemen lain), fungsi ini memutar+langsung menjeda
-   sebuah Audio "dummy" pada interaksi PERTAMA pengguna di
-   MANA PUN pada halaman (klik, tap, atau tombol keyboard).
-   Setelah itu, browser sudah menganggap halaman "diizinkan"
-   memutar audio, sehingga hover-hover berikutnya bisa
-   langsung bersuara tanpa hambatan lagi.
+   Overlay awal ("KLIK UNTUK MULAI") berfungsi sebagai interaksi
+   pertama yang WAJIB dilakukan pengguna sebelum masuk ke
+   halaman utama. Begitu diklik:
+     1. Sebuah Audio "primer" diputar+langsung dijeda, supaya
+        browser mengizinkan audio diputar untuk sisa sesi.
+     2. Overlay memudar (fade out) lalu disembunyikan total.
+   Setelah ini, hover ke tombol jobsheet manapun akan langsung
+   bersuara tanpa hambatan lagi.
 ---------------------------------------------------------- */
-function setupAudioUnlock() {
-  let unlocked = false;
+function setupStartOverlay() {
+  const overlay = document.getElementById("startOverlay");
+  const startBtn = document.getElementById("startOverlayBtn");
+  if (!overlay || !startBtn) return;
 
-  function unlock() {
-    if (unlocked) return;
-    unlocked = true;
-
-    // Coba putar+jeda audio hover yang sesungguhnya (bukan
-    // dummy terpisah) supaya browser mengizinkannya untuk
+  startBtn.addEventListener("click", () => {
+    // Buka kunci audio browser dengan memutar+langsung
+    // menjeda audio yang sesungguhnya dipakai (bukan dummy
+    // terpisah), supaya browser mengizinkannya untuk
     // pemutaran berikutnya di seluruh halaman.
     const primer = new Audio(jobsheets[0]?.sound || "");
     primer.volume = 0;
@@ -138,32 +148,32 @@ function setupAudioUnlock() {
       .then(() => primer.pause())
       .catch(() => {
         // Diamkan - jika gagal, sound tetap akan dicoba
-        // normal saat hover pertama kali terjadi.
+        // normal saat hover pertama kali terjadi nanti.
       });
 
-    // Event listener ini hanya perlu berjalan sekali
-    document.removeEventListener("click", unlock);
-    document.removeEventListener("keydown", unlock);
-    document.removeEventListener("pointerdown", unlock);
-  }
-
-  document.addEventListener("click", unlock);
-  document.addEventListener("keydown", unlock);
-  document.addEventListener("pointerdown", unlock);
+    overlay.classList.add("is-hidden");
+  });
 }
 
 /* ----------------------------------------------------------
-   HOVER INTERACTION
-   Saat cursor masuk tombol:
+   HOVER & FOCUS INTERACTION
+   Saat cursor masuk tombol (mouseenter) ATAU tombol menerima
+   fokus keyboard (focus, misal lewat Tab):
      - tombol mendapat class "is-active" (styling di CSS:
        inner area jadi orange, foto bunga muncul, animasi
        smooth via transition)
      - judul jobsheet muncul di kanan bawah (#activeTitle)
      - sound effect dimainkan satu kali
-   Saat cursor keluar tombol:
+   Saat cursor keluar (mouseleave) ATAU fokus keyboard pindah
+   (blur):
      - class "is-active" dilepas
-     - jika tidak ada tombol lain yang sedang di-hover,
+     - jika tidak ada tombol lain yang sedang aktif,
        judul di kanan bawah disembunyikan
+
+   Logika mouse dan keyboard disatukan lewat fungsi activate()
+   dan deactivate() supaya perilakunya selalu konsisten - siapa
+   pun yang mengaksesnya (mouse atau keyboard) mendapat
+   pengalaman yang sama.
 ---------------------------------------------------------- */
 function setupHoverInteraction() {
   const list = document.getElementById("jobsheetList");
@@ -174,11 +184,12 @@ function setupHoverInteraction() {
 
   buttons.forEach((btn) => {
     // Simpan z-index dasar (dipasang saat render) supaya bisa
-    // dikembalikan lagi setelah cursor keluar dari tombol.
+    // dikembalikan lagi setelah tombol tidak lagi aktif.
     const baseZIndex = btn.style.zIndex;
 
-    btn.addEventListener("mouseenter", () => {
-      // Lepas state aktif dari tombol lain (jaga-jaga, misal fokus keyboard)
+    function activate() {
+      // Lepas state aktif dari tombol lain (jaga-jaga, misal
+      // mouse dan keyboard fokus aktif berbeda tombol)
       buttons.forEach((other) => {
         if (other !== btn) other.classList.remove("is-active");
       });
@@ -187,9 +198,7 @@ function setupHoverInteraction() {
 
       // Naikkan z-index sementara supaya tombol pendek yang
       // sebagian tersembunyi di belakang tombol lain (karena
-      // efek tumpuk) tetap terlihat penuh saat di-hover.
-      // Inline style dipakai karena harus menang atas z-index
-      // dasar yang juga inline style.
+      // efek tumpuk) tetap terlihat penuh saat aktif.
       btn.style.zIndex = 999;
 
       // Tampilkan judul dinamis: "01-PENGENALAN HTML"
@@ -197,9 +206,6 @@ function setupHoverInteraction() {
       activeTitle.classList.add("is-visible");
 
       // Mainkan sound effect satu kali.
-      // new Audio() dibuat baru tiap hover supaya suara bisa
-      // ditumpuk/diulang walau sebelumnya belum selesai,
-      // dan tidak memblokir jika file audio belum ada.
       if (btn.dataset.sound) {
         const sfx = new Audio(btn.dataset.sound);
         sfx.play().catch(() => {
@@ -207,27 +213,37 @@ function setupHoverInteraction() {
           // memblokir autoplay sebelum interaksi pertama).
         });
       }
-    });
+    }
 
-    btn.addEventListener("mouseleave", () => {
+    function deactivate() {
       btn.classList.remove("is-active");
-
-      // Kembalikan z-index ke nilai dasar semula
       btn.style.zIndex = baseZIndex;
 
       // Sembunyikan judul hanya jika tidak ada tombol lain yang aktif
-      const stillHovering = list.querySelector(".jobsheet-btn.is-active");
-      if (!stillHovering) {
+      const stillActive = list.querySelector(".jobsheet-btn.is-active");
+      if (!stillActive) {
         activeTitle.classList.remove("is-visible");
       }
-    });
+    }
+
+    // Mouse
+    btn.addEventListener("mouseenter", activate);
+    btn.addEventListener("mouseleave", deactivate);
+
+    // Keyboard (Tab untuk pindah fokus antar tombol)
+    btn.addEventListener("focus", activate);
+    btn.addEventListener("blur", deactivate);
   });
 }
 
 /* ----------------------------------------------------------
    CLICK NAVIGATION
-   Saat tombol diklik, arahkan browser ke `link` milik tombol
-   tersebut menggunakan window.location.href.
+   Saat tombol diklik ATAU diaktifkan lewat keyboard (Enter
+   atau Space - ini otomatis didukung karena elemen <button>
+   native selalu memicu event "click" untuk kedua tombol
+   keyboard tersebut, tanpa perlu kode tambahan), arahkan
+   browser ke `link` milik tombol tersebut menggunakan
+   window.location.href.
    Mendukung relative URL maupun absolute URL/domain lain.
    Tidak menggunakan popup/window baru.
 ---------------------------------------------------------- */
@@ -252,7 +268,7 @@ function setupClickNavigation() {
 ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   renderJobsheetButtons();
-  setupAudioUnlock();
+  setupStartOverlay();
   setupHoverInteraction();
   setupClickNavigation();
 });
