@@ -1,5 +1,5 @@
 <?php 
-$page_title = "Daftar Sopir / Anggota";
+$page_title = "Daftar Sopir";
 require __DIR__ . '/../includes/koneksi.php';
 
 // ==========================================
@@ -11,23 +11,18 @@ $offset = ($page - 1) * $perPage;
 $keyword = trim($_GET['q'] ?? '');
 
 if ($keyword !== '') {
-    // Hitung total data berdasarkan pencarian nama / alamat / no_hp
-    $hitung = $pdo->prepare("SELECT COUNT(*) FROM anggota WHERE nama ILIKE :kw OR alamat ILIKE :kw OR no_hp ILIKE :kw");
+    // Search berdasarkan nama, no_supir, alamat, no_hp, atau email
+    $hitung = $pdo->prepare("SELECT COUNT(*) FROM sopir WHERE nama ILIKE :kw OR no_supir ILIKE :kw OR alamat ILIKE :kw OR no_hp ILIKE :kw OR email ILIKE :kw");
     $hitung->execute(['kw' => '%' . $keyword . '%']);
     $totalRows = $hitung->fetchColumn();
 
-    // Query data hasil pencarian dengan LIMIT & OFFSET
-    $stmt = $pdo->prepare("SELECT * FROM anggota WHERE nama ILIKE :kw OR alamat ILIKE :kw OR no_hp ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $stmt = $pdo->prepare("SELECT * FROM sopir WHERE nama ILIKE :kw OR no_supir ILIKE :kw OR alamat ILIKE :kw OR no_hp ILIKE :kw OR email ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
     $stmt->bindValue('kw', '%' . $keyword . '%');
 } else {
-    // Hitung total seluruh data
-    $totalRows = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
-
-    // Query semua data dengan LIMIT & OFFSET
-    $stmt = $pdo->prepare("SELECT * FROM anggota ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $totalRows = $pdo->query("SELECT COUNT(*) FROM sopir")->fetchColumn();
+    $stmt = $pdo->prepare("SELECT * FROM sopir ORDER BY id DESC LIMIT :limit OFFSET :offset");
 }
 
-// Bind parameter LIMIT dan OFFSET secara eksplisit sebagai Integer (PostgreSQL fix)
 $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
 $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
@@ -40,9 +35,8 @@ include __DIR__ . '/../includes/header.php';
 
 <main>
     <section>
-        <h2>Daftar Sopir / Anggota</h2>
+        <h2>Daftar Sopir</h2>
 
-        <!-- Pesan Flash Notification -->
         <?php if (isset($_SESSION['flash'])): ?>
             <div class="alert" style="padding: 10px; margin-bottom: 15px; border: 1px solid #ccc;">
                 <?= is_array($_SESSION['flash']) ? htmlspecialchars($_SESSION['flash']['pesan']) : htmlspecialchars($_SESSION['flash']); ?>
@@ -50,9 +44,8 @@ include __DIR__ . '/../includes/header.php';
             <?php unset($_SESSION['flash']); ?>
         <?php endif; ?>
 
-        <!-- Form Pencarian Server-Side (method="get") -->
         <form method="get" action="list.php" class="search-box" style="margin-bottom: 20px;">
-            <label for="search-input">Cari Nama / Alamat / No. HP Sopir</label>
+            <label for="search-input">Cari Sopir (Nama / No. Sopir / Email)</label>
             <div style="display: flex; gap: 8px; margin-top: 5px;">
                 <input type="text" id="search-input" name="q" value="<?= htmlspecialchars($keyword); ?>" placeholder="Ketik kata kunci...">
                 <button type="submit">Cari</button>
@@ -66,9 +59,12 @@ include __DIR__ . '/../includes/header.php';
             <table>
                 <thead>
                     <tr>
+                        <th>No. Sopir</th>
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>No. HP</th>
+                        <th>Tgl Gabung</th>
+                        <th>Email</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -76,9 +72,12 @@ include __DIR__ . '/../includes/header.php';
                     <?php if (!empty($daftarSopir)): ?>
                         <?php foreach ($daftarSopir as $item): ?>
                             <tr>
+                                <td><?= htmlspecialchars($item['no_supir']); ?></td>
                                 <td><?= htmlspecialchars($item['nama']); ?></td>
-                                <td><?= htmlspecialchars($item['alamat']); ?></td>
-                                <td><?= htmlspecialchars($item['no_hp']); ?></td>
+                                <td><?= htmlspecialchars($item['alamat'] ?? '-'); ?></td>
+                                <td><?= htmlspecialchars($item['no_hp'] ?? '-'); ?></td>
+                                <td><?= htmlspecialchars($item['tgl_gabung'] ?? '-'); ?></td>
+                                <td><?= htmlspecialchars($item['email'] ?? '-'); ?></td>
                                 <td>
                                     <a href="edit.php?id=<?= $item['id']; ?>" class="btn-edit">Edit</a>
                                     <form action="hapus.php" method="POST" class="form-hapus" style="display:inline;">
@@ -90,14 +89,13 @@ include __DIR__ . '/../includes/header.php';
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="4" style="text-align: center;">Belum ada data sopir.</td>
+                            <td colspan="7" style="text-align: center;">Belum ada data sopir.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
         </div>
 
-        <!-- Navigasi Pagination -->
         <?php if ($totalPages > 1): ?>
             <nav class="pagination" style="margin-top: 20px; text-align: center;">
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
@@ -111,6 +109,4 @@ include __DIR__ . '/../includes/header.php';
     </section>
 </main>
 
-<?php 
-include __DIR__ . '/../includes/footer.php'; 
-?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

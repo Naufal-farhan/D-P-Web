@@ -7,34 +7,39 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$id     = $_POST['id'] ?? null;
-$nama   = trim($_POST['nama'] ?? '');
-$alamat = trim($_POST['alamat'] ?? '');
-$no_hp  = trim($_POST['no_hp'] ?? '');
+$id         = $_POST['id'] ?? null;
+$no_supir   = trim($_POST['no_supir'] ?? '');
+$nama       = trim($_POST['nama'] ?? '');
+$alamat     = trim($_POST['alamat'] ?? '');
+$no_hp      = trim($_POST['no_hp'] ?? '');
+$tgl_gabung = $_POST['tgl_gabung'] !== '' ? $_POST['tgl_gabung'] : null;
+$email      = trim($_POST['email'] ?? '');
 
 if (!$id) {
     header('Location: list.php');
     exit;
 }
 
-// Validasi input
-if (empty($nama) || empty($alamat) || empty($no_hp)) {
-    $_SESSION['flash'] = "Semua field (Nama, Alamat, No. HP) wajib diisi!";
+if (empty($nama) || empty($no_supir)) {
+    $_SESSION['flash'] = "Nama dan No. Sopir wajib diisi!";
     header("Location: edit.php?id=" . urlencode($id));
     exit;
 }
 
 try {
     $stmt = $pdo->prepare(
-        "UPDATE anggota 
-         SET nama = :nama, alamat = :alamat, no_hp = :no_hp 
+        "UPDATE sopir 
+         SET no_supir = :no_supir, nama = :nama, alamat = :alamat, no_hp = :no_hp, tgl_gabung = :tgl_gabung, email = :email 
          WHERE id = :id"
     );
     $stmt->execute([
-        'nama'   => $nama,
-        'alamat' => $alamat,
-        'no_hp'  => $no_hp,
-        'id'     => $id,
+        'no_supir'   => $no_supir,
+        'nama'       => $nama,
+        'alamat'     => $alamat,
+        'no_hp'      => $no_hp,
+        'tgl_gabung' => $tgl_gabung,
+        'email'      => $email,
+        'id'         => $id,
     ]);
 
     $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data sopir berhasil diperbarui.'];

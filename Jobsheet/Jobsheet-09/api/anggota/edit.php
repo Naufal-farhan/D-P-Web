@@ -1,5 +1,5 @@
 <?php
-$page_title = "Edit Sopir / Anggota";
+$page_title = "Edit Data Sopir";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
 
@@ -12,8 +12,7 @@ if (!$id) {
     exit;
 }
 
-// Mengambil data sopir berdasarkan ID dari tabel anggota
-$stmt = $pdo->prepare("SELECT * FROM anggota WHERE id = :id");
+$stmt = $pdo->prepare("SELECT * FROM sopir WHERE id = :id");
 $stmt->execute(['id' => $id]);
 $sopir = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -34,16 +33,28 @@ if (!$sopir) {
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($sopir['id']); ?>">
 
         <p>
+            <label for="no_supir">No. Sopir</label><br>
+            <input type="text" id="no_supir" name="no_supir" value="<?php echo htmlspecialchars($sopir['no_supir'] ?? ''); ?>" required>
+        </p>
+        <p>
             <label for="nama">Nama Sopir</label><br>
             <input type="text" id="nama" name="nama" value="<?php echo htmlspecialchars($sopir['nama'] ?? ''); ?>" required>
         </p>
         <p>
             <label for="alamat">Alamat</label><br>
-            <textarea id="alamat" name="alamat" rows="3" required><?php echo htmlspecialchars($sopir['alamat'] ?? ''); ?></textarea>
+            <textarea id="alamat" name="alamat" rows="3"><?php echo htmlspecialchars($sopir['alamat'] ?? ''); ?></textarea>
         </p>
         <p>
             <label for="no_hp">No. HP / WhatsApp</label><br>
-            <input type="text" id="no_hp" name="no_hp" value="<?php echo htmlspecialchars($sopir['no_hp'] ?? ''); ?>" required>
+            <input type="text" id="no_hp" name="no_hp" value="<?php echo htmlspecialchars($sopir['no_hp'] ?? ''); ?>">
+        </p>
+        <p>
+            <label for="tgl_gabung">Tanggal Gabung</label><br>
+            <input type="date" id="tgl_gabung" name="tgl_gabung" value="<?php echo htmlspecialchars($sopir['tgl_gabung'] ?? ''); ?>">
+        </p>
+        <p>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($sopir['email'] ?? ''); ?>">
         </p>
         <p>
             <button type="submit">Simpan Perubahan</button>
