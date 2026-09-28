@@ -12,15 +12,14 @@ body {
     line-height: 1.5;
 }
 
+/* Header & Navigasi */
 header {
     background-color: #81021f;
     color: #e3bd8d;
-max-width: 1100px; /* <--- Ubah angka ini agar pas dengan konten di bawah */
-    
-    width: 100%;       /* Agar responsif saat layar mengecil */
-    margin: 20px auto; /* 'auto' di kiri-kanan membuat posisi selalu pas di tengah */
-    
-    box-sizing: border-box; /* Mencegah padding menambah lebar elemen */
+    max-width: 1100px;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
     padding: 15px 20px;
     display: flex;
     align-items: center;
@@ -52,6 +51,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Main & Layout Section */
 main {
     max-width: 1000px;
     margin: 3rem auto;
@@ -62,7 +62,7 @@ section {
     background-color: #81021f;
     border-radius: 10px;
     padding: 1.5rem;
-    margin-bottom: 1.5rem
+    margin-bottom: 1.5rem;
 }
 
 section h2 {
@@ -70,24 +70,23 @@ section h2 {
     color: #e3bd8d;
 }
 
-/* Container Utama Ringkasan (Membagi Kiri & Kanan) */
+/* Container Utama Ringkasan */
 main section:nth-of-type(2) {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Membuat isi kolom kiri dan kanan rata tengah secara vertikal */
+    align-items: center;
     gap: 2rem;
-    padding: 1.5rem; /* Tambahkan padding jika menggunakan pembungkus merah */
+    padding: 1.5rem;
 }
 
-/* Area Kiri: Teks & Judul */
 main section:nth-of-type(2) .ringkasan-info {
-    flex: 1; /* Mengambil proporsi ruang di sebelah kiri */
+    flex: 1;
 }
 
 main section:nth-of-type(2) .ringkasan-info h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #e3bd8d; /* Warna krem agar kontras dengan latar belakang merah */
+    color: #e3bd8d;
     margin-bottom: 0.5rem;
 }
 
@@ -97,50 +96,41 @@ main section:nth-of-type(2) .ringkasan-info p {
     line-height: 1.4;
 }
 
-/* Area Kanan: Grid 2x2 untuk 4 Kartu */
 main section:nth-of-type(2) .ringkasan-cards {
-    flex: 1.5; /* Mengambil proporsi ruang lebih lebar di sebelah kanan */
+    flex: 1.5;
     display: grid;
     gap: 1rem;
 }
 
-/* Styling Kartu (Sesuai dengan CSS Asli Anda) */
 main section:nth-of-type(2) article {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #e3bd8d;
-    border-radius: 3.9px;
+    border-radius: 4px;
     padding: 1.25rem;
     color: #81021f;
     text-align: center;
 }
 
 main section:nth-of-type(2) article h3 {
-    font-size: 1rem; /* Ukuran disesuaikan agar muat di grid 2x2 */
+    font-size: 1rem;
     font-weight: 700;
     color: #81021f;
     margin-bottom: 0.5rem;
 }
 
 main section:nth-of-type(2) article p {
-    font-size: 1.5rem; /* Ukuran angka diperbesar sedikit agar menonjol */
+    font-size: 1.5rem;
     font-weight: 700;
     color: #81021f;
     margin: 0;
 }
 
-main section:nth-of-type(3) h3 {
-    font-size: 1.5rem;
-    padding: 0.2rem;
-    font-weight: 700;
-    color: #e3bd8d;
-    text-align: center;
-}
-
+main section:nth-of-type(3) h3,
 main section:nth-of-type(3) p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.2rem;
     font-weight: 700;
     color: #e3bd8d;
@@ -151,6 +141,11 @@ main section:nth-of-type(3) {
     background-color: #81021f;
 }
 
+/* ===== Tabel & Aksi (Jobsheet 09) ===== */
+.table-responsive {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -159,42 +154,65 @@ table {
 th,
 td {
     text-align: left;
-    padding: 0.65rem, 0.75rem;
-    border-bottom: 1px solid #e2e6ea;
+    padding: 0.65rem 0.75rem; /* Menghapus koma bawaan yang menyebabkan error CSS */
+    border-bottom: 1px solid #4a121e;
 }
 
 thead {
-    background-color: #81021f;
+    background-color: #5c0116;
     color: #e3bd8d;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #1e1a2d;
+    background-color: #2b1723;
 }
 
 tbody tr:hover {
-    background-color: #eef4fa;
+    background-color: #3d1421;
 }
 
-td button {
+/* 6.2 Form Hapus yang Tidak Merusak Tata Letak */
+td form.form-hapus {
+    display: inline;
+}
+
+/* 6.1 Tautan Edit yang Terlihat Seperti Tombol & Tombol Aksi */
+td button,
+td a.btn-edit,
+.btn-danger {
+    display: inline-block;
     padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
-    margin-top: 0.35rem;
-    margin-bottom: 0.35rem;
+    margin: 0.2rem 0.1rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.55rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    vertical-align: middle;
 }
 
-td button:first-of-type {
+td button:first-of-type,
+td a.btn-edit {
     background-color: #f0ad4e;
     color: #fff;
 }
 
+td button:first-of-type:hover,
+td a.btn-edit:hover {
+    background-color: #ec971f;
+    text-decoration: none;
+}
+
+td button.btn-danger,
 td button:last-of-type {
     background-color: #f50800;
     color: #fff;
+}
+
+td button.btn-danger:hover,
+td button:last-of-type:hover {
+    background-color: #c40600;
 }
 
 .btn-detail {
@@ -215,7 +233,8 @@ form label {
 }
 
 form input,
-form select {
+form select,
+form textarea {
     width: 100%;
     max-width: 400px;
     padding: 0.55rem 0.7rem;
@@ -225,8 +244,9 @@ form select {
 }
 
 form button[type="submit"] {
-    background-color: #81021f;
-    color: #e3bd8d;
+    background-color: #e3bd8d;
+    color: #81021f;
+    font-weight: bold;
     border: none;
     padding: 0.6rem 1.5rem;
     border-radius: 4px;
@@ -235,7 +255,78 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #81021f;
+    background-color: #d6a970;
+}
+
+/* ===== 6.4 Form Pencarian (Search Box) ===== */
+.search-box {
+    margin-bottom: 1.5rem;
+}
+
+.search-box form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.search-box button {
+    padding: 0.55rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #e3bd8d;
+    color: #81021f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #d6a970;
+}
+
+/* ===== 6.3 Navigasi Pagination ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.pagination a {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #e3bd8d;
+    border-radius: 4px;
+    color: #e3bd8d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.pagination a:hover {
+    background-color: rgba(227, 189, 141, 0.2);
+}
+
+.pagination a.active {
+    background-color: #e3bd8d;
+    color: #81021f;
+    border-color: #e3bd8d;
+}
+
+/* Helper Error */
+.error {
+    display: block;
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
 }
 
 footer {
@@ -245,15 +336,7 @@ footer {
     font-size: 0.9rem;
 }
 
-@media (min-width: 768px) {
-    main section:nth-of-type(2) .ringkasan-cards {
-    flex: 1.5; /* Mengambil proporsi ruang lebih lebar di sebelah kanan */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Membagi kartu menjadi 2 kolom x 2 baris */
-    gap: 1rem;
-}
-}
-
+/* Nav Toggle & Media Queries */
 .nav-toggle-label {
     display: none;
     font-size: 1.6rem;
@@ -261,6 +344,15 @@ footer {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    main section:nth-of-type(2) .ringkasan-cards {
+        flex: 1.5;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -271,10 +363,11 @@ footer {
     .nav-toggle-label {
         display: block;
     }
+
     main section:nth-of-type(2) {
         display: grid;
         grid-template-columns: 1fr;
-        gap : 1rem
+        gap: 1rem;
     }
     
     header nav {
@@ -294,36 +387,9 @@ footer {
         text-align: right;
     }
 
-    main section:nth-of-type(2) {
-        grid-template-columns: 1fr;
-    }
-
     form input,
-    form select {
+    form select,
+    form textarea {
         max-width: 100%;
     }
-}
-
-.table responsive {
-    overflow-x: auto;
-}
-
-
-.error {
-    display: block;
-    color: #d9534f;
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
-}
-
-.search-box {
-    margin-bottom: 1rem;
-}
-
-.search-box input {
-    width: 100%;
-    max-width: 320px;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #cdd4da;
-    border-radius: 4px;
 }

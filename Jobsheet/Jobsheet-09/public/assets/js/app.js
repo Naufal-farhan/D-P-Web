@@ -1,5 +1,25 @@
+// 1. Konfirmasi Hapus via Event 'submit' (Jobsheet-09)
+function initHapusConfirm() {
+    document.addEventListener("submit", function (e) {
+        const form = e.target;
+
+        // Hanya proses jika form yang di-submit memiliki class "form-hapus"
+        if (!form.classList.contains("form-hapus")) return;
+
+        const row = form.closest("tr");
+        const nama = row ? row.querySelector("td")?.textContent.trim() : "data ini";
+        const yakin = confirm('Yakin ingin menghapus "' + nama + '"?');
+
+        // Jika pengguna menekan "Cancel", batalkan pengiriman form ke server
+        if (!yakin) {
+            e.preventDefault();
+        }
+    });
+}
+
+// 2. Validasi Form Tambah / Edit Data
 function initValidasiForm() {
-    const form = document.getElementById("form-tambah");
+    const form = document.getElementById("form-tambah") || document.getElementById("form-edit");
     if (!form) return;
 
     form.addEventListener("submit", function (e) {
@@ -45,3 +65,9 @@ function initValidasiForm() {
         }
     });
 }
+
+// Inisialisasi saat halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", function () {
+    initValidasiForm();
+    initHapusConfirm();
+});
