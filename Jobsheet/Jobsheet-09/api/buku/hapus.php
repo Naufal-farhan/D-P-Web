@@ -10,9 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $id = $_POST['id'] ?? null;
 if ($id) {
     try {
-        $stmt = $pdo->prepare("DELETE FROM buku WHERE id = :id");
+        $stmt = $pdo->prepare("DELETE FROM order_rental WHERE id = :id");
         $stmt->execute(['id' => $id]);
-        $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data order/buku berhasil dihapus.'];
+        $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data order berhasil dihapus.'];
     } catch (PDOException $e) {
         $_SESSION['flash'] = ['type' => 'danger', 'pesan' => 'Gagal menghapus data: ' . $e->getMessage()];
     }

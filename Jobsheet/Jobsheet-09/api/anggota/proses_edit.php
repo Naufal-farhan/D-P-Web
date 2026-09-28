@@ -19,7 +19,7 @@ if (!$id) {
 
 // Validasi input
 if (empty($nama) || empty($alamat) || empty($no_hp)) {
-    $_SESSION['flash'] = "Semua field wajib diisi!";
+    $_SESSION['flash'] = "Semua field (Nama, Alamat, No. HP) wajib diisi!";
     header("Location: edit.php?id=" . urlencode($id));
     exit;
 }
@@ -37,6 +37,7 @@ try {
         'id'     => $id,
     ]);
 
+    $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data sopir berhasil diperbarui.'];
     header('Location: list.php');
     exit;
 } catch (PDOException $e) {

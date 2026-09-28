@@ -1,5 +1,5 @@
 <?php
-$page_title = "Edit Order / Buku";
+$page_title = "Edit Order Rental Mobil";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
 
@@ -12,49 +12,42 @@ if (!$id) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM buku WHERE id = :id");
+// Mengambil data order berdasarkan ID dari tabel order_rental
+$stmt = $pdo->prepare("SELECT * FROM order_rental WHERE id = :id");
 $stmt->execute(['id' => $id]);
-$buku = $stmt->fetch(PDO::FETCH_ASSOC);
+$order = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$buku) {
+if (!$order) {
     header('Location: list.php');
     exit;
 }
 ?>
 
 <section>
-    <h2>Edit Order / Buku</h2>
+    <h2>Edit Order Rental Mobil</h2>
 
     <?php if ($flash): ?>
         <p style="color: red; font-weight: bold;"><?php echo htmlspecialchars($flash); ?></p>
     <?php endif; ?>
 
     <form id="form-edit" method="post" action="proses_edit.php">
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($buku['id']); ?>">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($order['id']); ?>">
 
         <p>
-            <label for="judul">Judul</label><br>
-            <input type="text" id="judul" name="judul" value="<?php echo htmlspecialchars($buku['judul'] ?? ''); ?>" required>
+            <label for="jenis">Jenis Mobil</label><br>
+            <input type="text" id="jenis" name="jenis" value="<?php echo htmlspecialchars($order['jenis'] ?? ''); ?>" required>
         </p>
         <p>
-            <label for="pengarang">Pengarang / Pemesan</label><br>
-            <input type="text" id="pengarang" name="pengarang" value="<?php echo htmlspecialchars($buku['pengarang'] ?? ''); ?>" required>
+            <label for="penyewa">Nama Penyewa</label><br>
+            <input type="text" id="penyewa" name="penyewa" value="<?php echo htmlspecialchars($order['penyewa'] ?? ''); ?>" required>
         </p>
         <p>
-            <label for="tahun">Tahun</label><br>
-            <input type="number" id="tahun" name="tahun" value="<?php echo htmlspecialchars($buku['tahun'] ?? ''); ?>" required>
+            <label for="sopir">Nama Sopir</label><br>
+            <input type="text" id="sopir" name="sopir" value="<?php echo htmlspecialchars($order['sopir'] ?? ''); ?>" required>
         </p>
         <p>
-            <label for="isbn">ISBN / Kode</label><br>
-            <input type="text" id="isbn" name="isbn" value="<?php echo htmlspecialchars($buku['isbn'] ?? ''); ?>" required>
-        </p>
-        <p>
-            <label for="stok">Stok / Jumlah</label><br>
-            <input type="number" id="stok" name="stok" value="<?php echo htmlspecialchars($buku['stok'] ?? ''); ?>" required>
-        </p>
-        <p>
-            <label for="kategori">Kategori</label><br>
-            <input type="text" id="kategori" name="kategori" value="<?php echo htmlspecialchars($buku['kategori'] ?? ''); ?>" required>
+            <label for="masa">Masa Sewa (Hari)</label><br>
+            <input type="number" id="masa" name="masa" min="1" value="<?php echo htmlspecialchars($order['masa'] ?? ''); ?>" required>
         </p>
         <p>
             <button type="submit">Simpan Perubahan</button>

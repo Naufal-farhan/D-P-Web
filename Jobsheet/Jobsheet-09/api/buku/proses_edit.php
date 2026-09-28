@@ -7,13 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$id        = $_POST['id'] ?? null;
-$judul     = trim($_POST['judul'] ?? '');
-$pengarang = trim($_POST['pengarang'] ?? '');
-$tahun     = $_POST['tahun'] ?? '';
-$isbn      = trim($_POST['isbn'] ?? '');
-$stok       = $_POST['stok'] ?? '';
-$kategori  = trim($_POST['kategori'] ?? '');
+$id      = $_POST['id'] ?? null;
+$jenis   = trim($_POST['jenis'] ?? '');
+$penyewa = trim($_POST['penyewa'] ?? '');
+$sopir   = trim($_POST['sopir'] ?? '');
+$masa    = $_POST['masa'] ?? '';
 
 if (!$id) {
     header('Location: list.php');
@@ -21,33 +19,31 @@ if (!$id) {
 }
 
 // Validasi input
-if (empty($judul) || empty($pengarang) || empty($tahun) || empty($isbn) || $stok === '' || empty($kategori)) {
-    $_SESSION['flash'] = "Semua field wajib diisi!";
+if (empty($jenis) || empty($penyewa) || empty($sopir) || $masa === '' || (int)$masa < 1) {
+    $_SESSION['flash'] = "Semua field wajib diisi dan masa sewa minimal 1 hari!";
     header("Location: edit.php?id=" . urlencode($id));
     exit;
 }
 
 try {
     $stmt = $pdo->prepare(
-        "UPDATE buku 
-         SET judul = :judul, pengarang = :pengarang, tahun = :tahun, 
-             isbn = :isbn, stok = :stok, kategori = :kategori 
+        "UPDATE order_rental 
+         SET jenis = :jenis, penyewa = :penyewa, sopir = :sopir, masa = :masa 
          WHERE id = :id"
     );
     $stmt->execute([
-        'judul'     => $judul,
-        'pengarang' => $pengarang,
-        'tahun'     => (int) $tahun,
-        'isbn'      => $isbn,
-        'stok'      => (int) $stok,
-        'kategori'  => $kategori,
-        'id'        => $id,
+        'jenis'   => $jenis,
+        'penyewa' => $penyewa,
+        'sopir'   => $sopir,
+        'masa'    => (int) $masa,
+        'id'      => $id,
     ]);
 
+    $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Data order berhasil diperbarui.'];
     header('Location: list.php');
     exit;
 } catch (PDOException $e) {
-    $_SESSION['flash'] = "Gagal memperbarui data: " . $e->getMessage();
+    $_SESSION['flash'] = "Gagal memperbarui data order: " . $e->getMessage();
     header("Location: edit.php?id=" . urlencode($id));
     exit;
 }

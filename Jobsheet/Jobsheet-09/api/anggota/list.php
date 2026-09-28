@@ -1,4 +1,5 @@
 <?php 
+$page_title = "Daftar Sopir / Anggota";
 require __DIR__ . '/../includes/koneksi.php';
 
 // ==========================================
@@ -26,7 +27,7 @@ if ($keyword !== '') {
     $stmt = $pdo->prepare("SELECT * FROM anggota ORDER BY id DESC LIMIT :limit OFFSET :offset");
 }
 
-// Bind parameter LIMIT dan OFFSET secara eksplisit sebagai Integer
+// Bind parameter LIMIT dan OFFSET secara eksplisit sebagai Integer (PostgreSQL fix)
 $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
 $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
@@ -41,7 +42,7 @@ include __DIR__ . '/../includes/header.php';
     <section>
         <h2>Daftar Sopir / Anggota</h2>
 
-        <!-- Tampilkan Pesan Flash jika Ada Error / Sukses -->
+        <!-- Pesan Flash Notification -->
         <?php if (isset($_SESSION['flash'])): ?>
             <div class="alert" style="padding: 10px; margin-bottom: 15px; border: 1px solid #ccc;">
                 <?= is_array($_SESSION['flash']) ? htmlspecialchars($_SESSION['flash']['pesan']) : htmlspecialchars($_SESSION['flash']); ?>
@@ -79,7 +80,7 @@ include __DIR__ . '/../includes/header.php';
                                 <td><?= htmlspecialchars($item['alamat']); ?></td>
                                 <td><?= htmlspecialchars($item['no_hp']); ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?= $item['id']; ?>">Edit</a> | 
+                                    <a href="edit.php?id=<?= $item['id']; ?>" class="btn-edit">Edit</a>
                                     <form action="hapus.php" method="POST" class="form-hapus" style="display:inline;">
                                         <input type="hidden" name="id" value="<?= $item['id']; ?>">
                                         <button type="submit" class="btn-danger">Hapus</button>
@@ -101,8 +102,7 @@ include __DIR__ . '/../includes/header.php';
             <nav class="pagination" style="margin-top: 20px; text-align: center;">
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                     <a href="list.php?page=<?= $i; ?><?= $keyword !== '' ? '&q=' . urlencode($keyword) : ''; ?>"
-                       class="<?= $i === $page ? 'active' : ''; ?>"
-                       style="padding: 6px 12px; margin: 0 2px; border: 1px solid #ccc; text-decoration: none; <?= $i === $page ? 'background-color: #007bff; color: white;' : 'color: #333;'; ?>">
+                       class="<?= $i === $page ? 'active' : ''; ?>">
                        <?= $i; ?>
                     </a>
                 <?php endfor; ?>
