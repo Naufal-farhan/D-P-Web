@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Jika sudah login, langsung alihkan ke halaman utama
+// Jika sudah login, langsung alihkan ke dashboard
 if (isset($_SESSION['user_id']) || isset($_SESSION['user'])) {
     header('Location: /');
     exit;
@@ -38,6 +38,10 @@ include __DIR__ . '/../includes/header.php';
             <button type="submit" style="width: 100%; padding: 10px; cursor: pointer;">Login</button>
         </p>
     </form>
+
+    <p style="text-align: center; margin-top: 15px;">
+        Belum punya akun? <a href="register.php" style="color: #e3bd8d;">Register di sini</a>
+    </p>
 </section>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
