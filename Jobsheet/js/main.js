@@ -39,13 +39,13 @@ const jobsheets = [
   { number: "06", title: "FETCH/JSON", link: "Jobsheet-06/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
   { number: "07", title: "KONSEP DASAR PHP", link: "https://jobsheet-07-eta.vercel.app/", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
   { number: "08", title: "DATABASE", link: "https://jobsheet-08-black.vercel.app/", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "09", title: "JUDUL JOBSHEET 09", link: "Jobsheet-09/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "10", title: "JUDUL JOBSHEET 10", link: "Jobsheet-10/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "11", title: "JUDUL JOBSHEET 11", link: "Jobsheet-11/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "12", title: "JUDUL JOBSHEET 12", link: "Jobsheet-12/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "13", title: "JUDUL JOBSHEET 13", link: "Jobsheet-13/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "14", title: "JUDUL JOBSHEET 14", link: "Jobsheet-14/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
-  { number: "15", title: "JUDUL JOBSHEET 15", link: "Jobsheet-15/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" }
+  { number: "09", title: "CRUD", link: "https://jobsheet-09-one.vercel.app/", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "10", title: "LOGIN/AUTH", link: "https://jobsheet-10.vercel.app/", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "n/a", title: "JUDUL JOBSHEET 11", link: "Jobsheet-11/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "n/a", title: "JUDUL JOBSHEET 12", link: "Jobsheet-12/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "n/a", title: "JUDUL JOBSHEET 13", link: "Jobsheet-13/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "n/a", title: "JUDUL JOBSHEET 14", link: "Jobsheet-14/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" },
+  { number: "n/a", title: "JUDUL JOBSHEET 15", link: "Jobsheet-15/index.html", image: "./assets/images/flower.jpg", sound: "./assets/audio/hover.mp3" }
 ];
 
 
