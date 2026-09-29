@@ -2,7 +2,8 @@
 // ==========================================
 // ROUTER UTAMA VERCEL (1 Serverless Function)
 // ==========================================
-require __DIR__ . '/includes/auth.php';
+// (Baris require auth.php DIHAPUS dari sini)
+
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // 1. Tampilkan Dashboard Utama jika mengakses URL Akar ( / ) atau /index.php
@@ -20,13 +21,11 @@ if ($uri === '/' || $uri === '/index.php') {
         </section>
 
         <section>
-            <!-- Kolom Kiri: Judul dan Keterangan Singkat -->
             <div class="ringkasan-info">
                 <h2>RINGKASAN</h2>
                 <p>Ringkasan statistik operasional rental mobil secara real-time.</p>
             </div>
 
-            <!-- Kolom Kanan: 4 Kartu Statistik disusun 2x2 -->
             <div class="ringkasan-cards">
                 <article>
                     <h3>TOTAL MOBIL</h3>
@@ -64,12 +63,10 @@ if ($uri === '/' || $uri === '/index.php') {
 // 2. Jalur Navigasi ke File PHP Lainnya (/buku/list.php, /anggota/edit.php, dll)
 $file = __DIR__ . $uri;
 
-// Jika mengakses direktori/folder (misal: /buku/ atau /anggota/), arahkan otomatis ke list.php
 if (is_dir($file)) {
     $file = rtrim($file, '/') . '/list.php';
 }
 
-// Jika file .php yang diminta ada, panggil filenya secara langsung
 if (file_exists($file) && is_file($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
     require $file;
     exit;
