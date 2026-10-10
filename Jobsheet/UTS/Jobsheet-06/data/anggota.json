@@ -1,0 +1,107 @@
+[
+  {
+    "id": "PLG-001",
+    "nama": "Ahmad Rizky",
+    "nik": "3573012304950001",
+    "telepon": "081234567890",
+    "alamat": "Jl. Soekarno Hatta No. 9, Malang"
+  },
+  {
+    "id": "PLG-002",
+    "nama": "Dewi Sartika",
+    "nik": "3573018209930002",
+    "telepon": "085712345678",
+    "alamat": "Jl. Veteran No. 12, Malang"
+  },
+  {
+    "id": "PLG-003",
+    "nama": "Budi Pratama",
+    "nik": "3573011508900003",
+    "telepon": "081987654321",
+    "alamat": "Jl. Borobudur No. 45, Malang"
+  },
+  {
+    "id": "PLG-004",
+    "nama": "Siti Nurhaliza",
+    "nik": "3573015211960004",
+    "telepon": "082134567891",
+    "alamat": "Jl. Bendungan Sigura-Gura No. 8, Malang"
+  },
+  {
+    "id": "PLG-005",
+    "nama": "Eko Prasetyo",
+    "nik": "3573012002880005",
+    "telepon": "083890123456",
+    "alamat": "Jl. Candi Panggung No. 17, Malang"
+  },
+  {
+    "id": "PLG-006",
+    "nama": "Rina Anggraini",
+    "nik": "3573016504970006",
+    "telepon": "085234567892",
+    "alamat": "Jl. Kawi No. 30, Malang"
+  },
+  {
+    "id": "PLG-007",
+    "nama": "Fajar Hidayat",
+    "nik": "3573011010920007",
+    "telepon": "087812345673",
+    "alamat": "Jl. S. Parman No. 88, Malang"
+  },
+  {
+    "id": "PLG-008",
+    "nama": "Nadia Wijaya",
+    "nik": "3573014803980008",
+    "telepon": "089612345674",
+    "alamat": "Jl. Ijen No. 14, Malang"
+  },
+  {
+    "id": "PLG-009",
+    "nama": "Hendra Kurniawan",
+    "nik": "3573012506850009",
+    "telepon": "081398765432",
+    "alamat": "Jl. MT Haryono No. 120, Malang"
+  },
+  {
+    "id": "PLG-010",
+    "nama": "Maya Kusuma",
+    "nik": "3573017007940010",
+    "telepon": "085698765433",
+    "alamat": "Jl. Danau Toba No. 5, Sawojajar, Malang"
+  },
+  {
+    "id": "PLG-011",
+    "nama": "Rizky Ramadhan",
+    "nik": "3573010301990011",
+    "telepon": "082298765434",
+    "alamat": "Jl. Sunandar Priyo Sudarmo No. 22, Malang"
+  },
+  {
+    "id": "PLG-012",
+    "nama": "Larasati Putri",
+    "nik": "3573015409950012",
+    "telepon": "083198765435",
+    "alamat": "Jl. Galunggung No. 60, Malang"
+  },
+  {
+    "id": "PLG-013",
+    "nama": "Agus Setiawan",
+    "nik": "3573011708870013",
+    "telepon": "087798765436",
+    "alamat": "Jl. Raya Tlogomas No. 99, Malang"
+  },
+  {
+    "id": "PLG-014",
+    "nama": "Fitri Handayani",
+    "nik": "3573016205930014",
+    "telepon": "089598765437",
+    "alamat": "Jl. Terusan Dieng No. 15, Malang"
+  },
+  {
+    "id": "PLG-015",
+    "nama": "Bayu Perkasa",
+    "nik": "3573012912910015",
+    "telepon": "081298765438",
+    "alamat": "Jl. Mayjend Panjaitan No. 3, Malang"
+  }
+]

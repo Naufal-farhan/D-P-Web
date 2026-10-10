@@ -4,7 +4,7 @@ include '../includes/header.php';
 ?>
 
 <main>
-    <form id="form-tambah" action="proses_tambah.php" method="POST">
+    <form id="form-tambah" action="proses_tambah.php" method="post">
         <p>
             <label for="jenis">Jenis</label><br>
             <input type="text" id="jenis" name="jenis" required>

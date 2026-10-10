@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mobil - Rental Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li class="active"><a href="list.html">Data Mobil</a></li>
+            <li><a href="../anggota/list.html">Data Pelanggan</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="main-wrapper">
+        <header class="topbar">
+            <!-- Tombol Toggle Sidebar untuk HP -->
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+
+        <main class="content-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="page-title" style="margin: 0;">Daftar Armada Mobil</h1>
+                    <a href="tambah.html" class="btn btn-primary">+ Tambah Mobil Baru</a>
+                </div>
+
+                <table id="table-buku">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Merk / Type Mobil</th>
+                            <th>Plat Nomor</th>
+                            <th>Tarif / Hari</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-buku">
+                        <tr>
+                            <td>MBL-001</td>
+                            <td>Toyota Avanza Veloz</td>
+                            <td>N 1234 AB</td>
+                            <td>Rp 350.000</td>
+                            <td><span class="badge badge-success">Tersedia</span></td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MBL-002</td>
+                            <td>Mitsubishi Xpander</td>
+                            <td>N 5678 CD</td>
+                            <td>Rp 400.000</td>
+                            <td><span class="badge badge-warning">Disewa</span></td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MBL-003</td>
+                            <td>Honda Innova Reborn</td>
+                            <td>N 9101 EF</td>
+                            <td>Rp 550.000</td>
+                            <td><span class="badge badge-success">Tersedia</span></td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/buku.js"></script>
+</body>
+
+</html>

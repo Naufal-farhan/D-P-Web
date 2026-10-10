@@ -26,3 +26,8 @@ INSERT INTO order_rental (jenis, penyewa, sopir, masa) VALUES
 ('Mitsubishi Pajero Sport', 'Doni Pratama', 'Eko Wijaya', 5),
 ('Daihatsu Xenia', 'Rina Kartika', 'Ahmad Dahlan', 1),
 ('Toyota Hiace Commuter', 'PT Maju Bersama', 'Bambang Suroso', 4);
+
+SELECT table_name, table_type
+FROM information_schema.tables
+WHERE table_schema = 'public'
+ORDER BY table_name;

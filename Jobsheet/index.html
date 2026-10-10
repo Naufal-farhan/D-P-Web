@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&family=Nabla&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JOBSHEET</title>
@@ -11,60 +8,30 @@
 </head>
 <body>
 
-  <!-- ==========================================
-       START OVERLAY
-       Menutupi seluruh layar saat halaman pertama kali
-       dibuka. Klik di sini menghitung sebagai interaksi
-       pertama pengguna, sehingga browser mengizinkan audio
-       diputar untuk seluruh sisa sesi (lihat setupAudioUnlock
-       di js/main.js). Overlay ini hilang setelah diklik.
-  =========================================== -->
-  <div class="start-overlay" id="startOverlay">
-    <button class="start-overlay__btn" id="startOverlayBtn" type="button">
-      KLIK UNTUK MULAI
-    </button>
+  <!-- Judul halaman -->
+  <h1>JOBSHEET</h1>
+
+  <!-- Daftar 16 tombol jobsheet -->
+  <!-- Setiap tombol adalah tag <a> (link) yang ditata seperti tombol -->
+  <!-- Ganti href="..." untuk mengubah tujuan link tiap tombol -->
+  <div class="jobsheet-list">
+    <a class="jobsheet-btn" href="Jobsheet-01/index.html">01 - PENGENALAN HTML</a>
+    <a class="jobsheet-btn" href="Jobsheet-02/index.html">02 - KONSEP DASAR CSS</a>
+    <a class="jobsheet-btn" href="Jobsheet-03/index.html">03 - KONSEP DASAR RESPONSIVE</a>
+    <a class="jobsheet-btn" href="Jobsheet-03/index.html">03-BS - BOOTSTRAP</a>
+    <a class="jobsheet-btn" href="Jobsheet-04/index.html">04 - UI/UX</a>
+    <a class="jobsheet-btn" href="Jobsheet-05/index.html">05 - KONSEP DASAR JAVASCRIPT</a>
+    <a class="jobsheet-btn" href="Jobsheet-06/index.html">06 - FETCH/JSON</a>
+    <a class="jobsheet-btn" href="https://jobsheet-07-eta.vercel.app/">07 - KONSEP DASAR PHP</a>
+    <a class="jobsheet-btn" href="https://jobsheet-08-black.vercel.app/">08 - DATABASE</a>
+    <a class="jobsheet-btn" href="https://jobsheet-09-one.vercel.app/">09 - CRUD</a>
+    <a class="jobsheet-btn" href="https://jobsheet-10.vercel.app/">10 - LOGIN/AUTH</a>
+    <a class="jobsheet-btn" href="Jobsheet-11/index.html">11 - JUDUL JOBSHEET 11</a>
+    <a class="jobsheet-btn" href="Jobsheet-12/index.html">12 - JUDUL JOBSHEET 12</a>
+    <a class="jobsheet-btn" href="Jobsheet-13/index.html">13 - JUDUL JOBSHEET 13</a>
+    <a class="jobsheet-btn" href="UTS/index.html">14 - UTS</a>
+    <a class="jobsheet-btn" href="Jobsheet-15/index.html">15 - JUDUL JOBSHEET 15</a>
   </div>
 
-  <!-- ==========================================
-       MAIN WRAPPER
-       Membungkus seluruh halaman (tidak scroll)
-  =========================================== -->
-  <div class="page">
-
-    <!-- ==========================================
-         LEFT PANEL
-         Berisi daftar tombol jobsheet (01-16)
-         Hanya area ini yang boleh discroll
-    =========================================== -->
-    <section class="jobsheet-panel" id="jobsheetPanel">
-      <div class="jobsheet-list" id="jobsheetList">
-        <!-- Tombol jobsheet dirender secara dinamis oleh js/main.js
-             dari array `jobsheets`. Tidak perlu diedit manual di sini. -->
-      </div>
-    </section>
-
-    <!-- ==========================================
-         RIGHT AREA
-         Identitas (kanan atas) + judul dinamis (kanan bawah)
-    =========================================== -->
-    <section class="right-area">
-
-      <!-- Identitas - fixed, tidak ikut scroll -->
-      <div class="identity">
-        <h1 class="identity-title">JOBSHEET</h1>
-        <p class="identity-name">Naufal Farhan Nur<br />Ramadhan</p>
-        <p class="identity-class">TI-2D</p>
-      </div>
-
-      <!-- Judul dinamis saat hover tombol (Phase 4) -->
-      <div class="active-title" id="activeTitle">
-        <!-- Contoh: 01-PENGENALAN HTML -->
-      </div>
-
-    </section>
-
-  </div>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

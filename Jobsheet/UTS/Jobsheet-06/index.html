@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Mobil - Dashboard Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="index.html">Dashboard</a></li>
+            <li><a href="buku/list.html">Data Mobil</a></li>
+            <li><a href="anggota/list.html">Data Pelanggan</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="main-wrapper">
+        <header class="topbar">
+            <!-- Tombol Toggle Sidebar untuk HP -->
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+
+        <main class="content-body">
+            <h1 class="page-title">Dashboard Overview</h1>
+
+            <!-- Stat Cards Ringkasan Data -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3>Total Mobil</h3>
+                        <p class="stat-value" id="total-mobil">15</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3>Mobil Disewa</h3>
+                        <p class="stat-value" id="mobil-disewa">5</p>
+                    </div>
+                </div>
+
+                <div class="stat-card border-danger">
+                    <div class="stat-info">
+                        <h3>Mobil Maintenance</h3>
+                        <p class="stat-value" id="mobil-maintenance">1</p>
+                    </div>
+                </div>
+
+                <div class="stat-card border-success">
+                    <div class="stat-info">
+                        <h3>Siap Dirental</h3>
+                        <p class="stat-value" id="mobil-siap">9</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ringkasan Transaksi / Transaksi Terbaru -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 style="font-size: 18px; color: #1e293b;">Transaksi Rental Terbaru</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Transaksi</th>
+                            <th>Pelanggan</th>
+                            <th>Mobil</th>
+                            <th>Tgl Sewa</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TRX-001</td>
+                            <td>Ahmad Rizky</td>
+                            <td>Mitsubishi Xpander (N 5678 CD)</td>
+                            <td>09 Okt 2026</td>
+                            <td><span class="badge badge-warning">Berjalan</span></td>
+                        </tr>
+                        <tr>
+                            <td>TRX-000</td>
+                            <td>Dewi Sartika</td>
+                            <td>Toyota Avanza Veloz (N 1234 AB)</td>
+                            <td>01 Okt 2026</td>
+                            <td><span class="badge badge-success">Selesai</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

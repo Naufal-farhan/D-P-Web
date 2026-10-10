@@ -1,0 +1,107 @@
+[
+  {
+    "id": "MBL-001",
+    "merk": "Toyota Avanza Veloz",
+    "plat": "N 1234 AB",
+    "tarif": 350000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-002",
+    "merk": "Mitsubishi Xpander Ultimate",
+    "plat": "N 5678 CD",
+    "tarif": 400000,
+    "status": "Disewa"
+  },
+  {
+    "id": "MBL-003",
+    "merk": "Honda Innova Reborn",
+    "plat": "N 9101 EF",
+    "tarif": 550000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-004",
+    "merk": "Daihatsu Xenia RS",
+    "plat": "N 1122 GH",
+    "tarif": 320000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-005",
+    "merk": "Suzuki Ertiga Hybrid",
+    "plat": "N 3344 IJ",
+    "tarif": 380000,
+    "status": "Disewa"
+  },
+  {
+    "id": "MBL-006",
+    "merk": "Honda Brio Satya",
+    "plat": "N 5566 KL",
+    "tarif": 300000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-007",
+    "merk": "Toyota Fortuner VRZ",
+    "plat": "N 7788 MN",
+    "tarif": 850000,
+    "status": "Disewa"
+  },
+  {
+    "id": "MBL-008",
+    "merk": "Mitsubishi Pajero Sport",
+    "plat": "N 9900 OP",
+    "tarif": 850000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-009",
+    "merk": "Toyota Alphard Transformer",
+    "plat": "N 1357 QR",
+    "tarif": 1800000,
+    "status": "Perbaikan"
+  },
+  {
+    "id": "MBL-010",
+    "merk": "Hyundai Stargazer",
+    "plat": "N 2468 ST",
+    "tarif": 400000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-011",
+    "merk": "Wuling Air EV",
+    "plat": "N 1111 UV",
+    "tarif": 350000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-012",
+    "merk": "Toyota HiAce Commuter",
+    "plat": "N 2222 WX",
+    "tarif": 1100000,
+    "status": "Disewa"
+  },
+  {
+    "id": "MBL-013",
+    "merk": "Isuzu ELF Long",
+    "plat": "N 3333 YZ",
+    "tarif": 1200000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-014",
+    "merk": "Daihatsu Terios R Custom",
+    "plat": "N 4444 AA",
+    "tarif": 4200000,
+    "status": "Tersedia"
+  },
+  {
+    "id": "MBL-015",
+    "merk": "Nissan Serena e-Power",
+    "plat": "N 5555 BB",
+    "tarif": 650000,
+    "status": "Tersedia"
+  }
+]

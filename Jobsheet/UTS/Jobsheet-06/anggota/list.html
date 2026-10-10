@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pelanggan - Rental Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="../buku/list.html">Data Mobil</a></li>
+            <li class="active"><a href="list.html">Data Pelanggan</a></li>
+        </ul>
+    </aside>
+
+    <div class="main-wrapper">
+        <header class="topbar">
+            <!-- Tombol Toggle Sidebar untuk HP -->
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+
+        <main class="content-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="page-title" style="margin: 0;">Daftar Pelanggan Terdaftar</h1>
+                    <a href="tambah.html" class="btn btn-primary">+ Tambah Pelanggan</a>
+                </div>
+
+                <table id="table-anggota">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama Pelanggan</th>
+                            <th>No. KTP / SIM</th>
+                            <th>No. Telepon</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-anggota">
+                        <tr>
+                            <td>PLG-001</td>
+                            <td>Ahmad Rizky</td>
+                            <td>3573012304950001</td>
+                            <td>081234567890</td>
+                            <td>Jl. Soekarno Hatta No. 9, Malang</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PLG-002</td>
+                            <td>Dewi Sartika</td>
+                            <td>3573018209930002</td>
+                            <td>085712345678</td>
+                            <td>Jl. Veteran No. 12, Malang</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/anggota.js"></script>
+</body>
+
+</html>
