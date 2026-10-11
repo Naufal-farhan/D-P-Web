@@ -103,7 +103,6 @@ tbody tr:hover { background: #f8fafc; }
 .badge-success { color: #166534; background: #dcfce7; }
 .badge-warning { color: #92400e; background: #fef3c7; }
 .badge-danger { color: #991b1b; background: #fee2e2; }
-
 .btn {
     display: inline-block;
     border: 0;
