@@ -1,4 +1,7 @@
-/* Reset & Base */
+/* =====================================================
+   SIMPEL RENTAL MOBIL ADMIN - Jobsheet 02
+   Fokus: styling dasar CSS untuk layout desktop.
+   ===================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,247 +9,207 @@
 }
 
 body {
-    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-    color: #070000;
-    background-color: #f5f6f8;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1e293b;
+    background: #f1f5f9;
     line-height: 1.5;
 }
-header {
-    background-color:#61dd08 ;
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    padding: 24px 16px;
+    color: #f8fafc;
+    background: #1e293b;
+}
+
+.brand { padding: 0 10px 28px; }
+.brand h2 { font-size: 1.25rem; line-height: 1.3; }
+.brand p { margin-top: 6px; color: #94a3b8; font-size: .85rem; }
+
+.nav-links { list-style: none; }
+.nav-links li { margin-bottom: 8px; }
+.nav-links a {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 8px;
+    color: #cbd5e1;
+}
+.nav-links a:hover, .nav-links li.active a {
     color: #fff;
-    padding: 1rem, 1.5rem;
+    background: #2563eb;
+}
+
+.main-wrapper { min-height: 100vh; margin-left: 250px; }
+.topbar {
+    min-height: 74px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 28px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
 }
+.topbar .title { font-size: 1.05rem; font-weight: 700; }
+.user-info { color: #64748b; font-size: .9rem; }
+.content-body { max-width: 1500px; margin: 0 auto; padding: 28px; }
+.page-title { margin-bottom: 6px; font-size: 1.65rem; }
+.page-description { margin-bottom: 24px; color: #64748b; }
 
-header h1 {
-    font-size: 1.4rem;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-}
-header nav a {
-    color: #fff;
-    font-weight: 500;
-}
-
-a {
-    color: #61dd08;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-main{
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-}
-section{
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 0 1.5rem;
-    margin-bottom: 1.5rem
-}
-section h2{
-    margin-bottom: 1rem;
-    color: #1d5b8a;
-}
-/* Kartu Statistik (CSS Grid) */
-main section:nth-of-type(2) {
+.stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap : 1rem
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
 }
-main section:nth-of-type(2) article {
-    background-color: #eef4fa;
-    border-radius: 8px;
-    padding: 1.25rem;
-    text-align: center;
+.stat-card, .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(15, 23, 42, .04);
 }
-main section:nth-of-type(2) article h3{
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #61dd08;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td{
-    text-align: left;
-    padding: 0.65rem, 0.75rem;
-    border-bottom: 1px solid #e2e6ea;
-}
-thead{
-    background-color:  #61dd08;
-    color: #fff;
-}
-tbody tr:nth-child(even){
-    background-color: #f7f9fb;
-}
-tbody tr:hover{
-    background-color: #eef4fa;
-}
-td button{
-    padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85rem;
-}
-td button{
-    padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85rem;
-}
-td button:first-of-type{
-    background-color: #f0ad4e;
-    color: #fff;
-}
-td button:last-of-type{
-    background-color:  #d9534f;
-    color: #fff;
-}
-.btn-detail{
-    background-color:  #04d300;
-    color: #fff;
-}
-/* ===== Form ===== */
-form p {
-    margin-bottom: 1rem;
-}
+.stat-card { padding: 20px; }
+.stat-card h3 { color: #64748b; font-size: .9rem; font-weight: 600; }
+.stat-value { margin-top: 8px; font-size: 1.9rem; font-weight: 700; }
+.border-danger { border-left: 4px solid #ef4444; }
+.border-warning { border-left: 4px solid #f59e0b; }
+.border-success { border-left: 4px solid #22c55e; }
+.border-primary { border-left: 4px solid #2563eb; }
 
-form label {
-    display: block;
-    margin-bottom: 0.35rem;
+.card { margin-bottom: 24px; padding: 22px; }
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.card-header h2 { font-size: 1.1rem; }
+.table-responsive { width: 100%; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+th { color: #475569; background: #f8fafc; font-size: .85rem; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #f8fafc; }
+
+.badge { display: inline-block; padding: 4px 9px; border-radius: 999px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.badge-success { color: #166534; background: #dcfce7; }
+.badge-warning { color: #92400e; background: #fef3c7; }
+.badge-danger { color: #991b1b; background: #fee2e2; }
+
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 7px;
+    padding: 9px 13px;
+    cursor: pointer;
     font-weight: 600;
-    color: #444;
-}
-
-form input,
-form select {
-    width: 100%;
-    max-width: 400px;
-    padding: 0.55rem 0.7rem;
-    border: 1px solid #cdd4da;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-form button[type="submit"] {
-    background-color: #61dd08;
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-form button[type="submit"]:hover {
-    background-color: #61dd08;
-}
-footer {
     text-align: center;
-    padding: 1.25rem;
-    color: #7a8794;
-    font-size: 0.9rem;
 }
-@media (max-width: 768px) {
-     main section:nth-of-type(2) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-.nav-toggle {
-    display :none;
-}
-.nav-toggle-label {
-    display : none;
-    font-size : 1.6rem;
-    color:#fff;
-    cursor: pointer;   
-}
-@media (max-width: 480px){
-    header {
-    position: relative;
-}
+.btn-primary { color: #fff; background: #2563eb; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-secondary { color: #334155; background: #e2e8f0; }
+.btn-secondary:hover { background: #cbd5e1; }
+.btn-warning { color: #78350f; background: #fde68a; }
+.btn-danger { color: #fff; background: #dc2626; }
+.btn-sm { padding: 6px 9px; font-size: .82rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
-.nav-toggle-label {
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.form-group { margin-bottom: 4px; }
+.form-group label { display: block; margin-bottom: 7px; font-weight: 600; font-size: .9rem; }
+.form-group input, .form-group select, .form-group textarea {
     display: block;
-}
-
-header nav {
-    display: none;
     width: 100%;
-    order: 3;
-    margin-top: 1rem;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
 }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: 2px solid #bfdbfe;
+    border-color: #2563eb;
+}
+.form-actions { display: flex; gap: 10px; margin-top: 20px; }
+.help-text { margin-top: 5px; color: #64748b; font-size: .82rem; }
 
-.nav-toggle:checked ~ nav {
-    display: block;
-}
+/* Pada Jobsheet 02 belum ada media query khusus layar mobile. */
 
-header nav ul {
-    flex-direction: column;
-    gap: 0.75rem;
-}
-main section:nth-of-type(2) {
-        grid-template-columns: 1fr;
-    }
 
-    form input,
-    form select {
-        max-width: 100%;
-    }
-}
-.table responsive {
-    overflow-x: auto;   
-}
-/* Breakpoint baru */
-@media (min-width: 1800px){
-    main {
-        max-width: 100% !important;
-        width: 100%;
-        margin: 1.5rem 0;
-        padding: 0 2rem;
-    }
-    section {
-        padding: 1.5rem 2rem;
-        width: 100%;
-    }
-    body {
-    font-size: 2.15rem !important; /* Memperbesar ukuran dasar teks di seluruh halaman */
-    line-height: 1.6;
-}
-h1{
-    font-size: 5.2rem !important;
-    margin-bottom: 10px;
-}
-h3{
-    font-size: 3.2rem !important;
-    margin-bottom: 10px;
-}
-nav{
-    font-size: 3.2rem !important;
-    margin-bottom: 10px;
-}
-section{
-    background-color: #fff;
-    font-size: 3.2rem !important;
+/* =====================================================
+   Jobsheet 03: responsive layout dan hamburger CSS-only.
+   Checkbox + label digunakan agar belum perlu JavaScript.
+   ===================================================== */
+.sidebar-toggle-checkbox { display: none; }
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
     border-radius: 8px;
-    padding: 30 1.5rem;
-    margin-bottom: 1.5rem
+    color: #fff;
+    background: #2563eb;
+    cursor: pointer;
+    font-size: 1.35rem;
 }
+.sidebar-overlay { display: none; }
+.sidebar.active { transform: translateX(0); }
+.sidebar-overlay.active { display: block; }
+
+@media (max-width: 1024px) {
+    .content-body { padding: 22px; }
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .topbar { padding: 14px 22px; }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        z-index: 1001;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 8px 0 24px rgba(15, 23, 42, .15);
+    }
+    .sidebar-toggle-checkbox:checked ~ .sidebar { transform: translateX(0); }
+    .sidebar-toggle-checkbox:checked ~ .sidebar-overlay { display: block; }
+    .sidebar-overlay {
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        border: 0;
+        background: rgba(15, 23, 42, .45);
+        cursor: pointer;
+    }
+    .main-wrapper { margin-left: 0; width: 100%; }
+    .menu-toggle { display: inline-flex; flex: 0 0 auto; }
+    .topbar { justify-content: flex-start; }
+    .topbar .title { flex: 1; }
+    .user-info { display: none; }
+    .content-body { padding: 18px; }
+    .table-responsive { overflow-x: auto; }
+    table { min-width: 650px; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+    .stat-card { padding: 16px; }
+    .stat-value { font-size: 1.6rem; }
+    .content-body { padding: 14px; }
+    .topbar { min-height: 64px; padding: 12px 14px; }
+    .topbar .title { font-size: .92rem; }
+    .page-title { font-size: 1.35rem; }
+    .card { padding: 15px; }
+    .card-header { align-items: flex-start; flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; gap: 12px; }
+    .form-actions { flex-direction: column; }
+    .form-actions .btn { width: 100%; }
 }

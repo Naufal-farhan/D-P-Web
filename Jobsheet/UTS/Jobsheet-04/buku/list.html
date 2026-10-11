@@ -1,157 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mobil | Rental Mobil Admin</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <header>
-        <h1>SIMPUS-MINI</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-toggle-label">&#9776</label>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Beranda</a></li>
-                <li><a href="list.html">Daftar Buku</a></li>
-                <li><a href="tambah.html">Tambah Buku</a></li>
-                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
-                <li><a href="../anggota/tambah.html">Tambah Anggota</a></li>
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox" aria-label="Tampilkan navigasi">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+            <p>Sistem Manajemen Rental</p>
+        </div>
+        <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li class="active"><a href="../buku/list.html">Data Mobil</a></li>
+                <li><a href="../anggota/list.html">Data Pelanggan</a></li>
             </ul>
-        </nav>
-    </header>
-<div class="table-responsive">
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Judul</th>
-                    <th>Pengarang</th>
-                    <th>Tahun</th>
-                    <th>Stok</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <!-- //Buku 1 -->
-                    <td>Laskar Pelangi</td>
-                    <td>Andrea Hirata</td>
-                    <td>2005</td>
-                    <td>4</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 2 -->
-                    <td>Janji</td>
-                    <td>Tereliye</td>
-                    <td>2005</td>
-                    <td>2</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 3 -->
-                    <td>Rembulan Tenggelam di Wajahmu</td>
-                    <td>Tereliye</td>
-                    <td>2003</td>
-                    <td>2</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 4 -->
-                    <td>Six of Crows</td>
-                    <td>Leigh Barduo</td>
-                    <td>2009</td>
-                    <td>18</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 5 -->
-                    <td>Sang Alkemis</td>
-                    <td>Paulo Coelho</td>
-                    <td>1955</td>
-                    <td>9</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- Buku 6 -->
-                    <td>Comet Minor</td>
-                    <td>Tereliye</td>
-                    <td>2016</td>
-                    <td>20</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 7 -->
-                    <td>Parable</td>
-                    <td>Brian Khrisna</td>
-                    <td>2015</td>
-                    <td>10</td>
-                    <td>
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail">Detail</button>
-                        <button type="Button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <!-- // buku 8 -->
-                    <td>Kronik Peristiwa Madiun PKI 1948</td>
-                    <td>Suratmin</td>
-                    <td>1979</td>
-                    <td>4</td>
-                    <td >
-                        <button type="Button">Edit</button>
-                        <button type="Button" class = "btn btn-detail" >Detail</button>
-                        <button type="Button" >Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-            
-        </table>
-    </div>
-    </main>
-    
-    <footer>
-        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
-    </footer>
-</body>
+    </aside>
+    <label class="sidebar-overlay" for="sidebar-toggle" aria-label="Tutup navigasi"></label>
 
+    <div class="main-wrapper">
+        <header class="topbar">
+            <label for="sidebar-toggle" class="menu-toggle" aria-label="Buka menu navigasi">☰</label>
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+        <main class="content-body">
+            <h1 class="page-title">Data Mobil</h1>
+            <p class="page-description">Daftar kendaraan yang tercatat pada sistem rental.</p>
+            <section class="card">
+                <div class="card-header"><h2>Data Mobil</h2><a class="btn btn-primary" href="tambah.html">+ Tambah Mobil</a></div>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>ID Mobil</th><th>Merk / Model</th><th>Nomor Polisi</th><th>Tarif per Hari</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <tbody>
+<tr><td><strong>MBL-001</strong></td><td>Mitsubishi Xpander</td><td>N 5678 CD</td><td>Rp 450.000</td><td><span class="badge badge-warning">Disewa</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>MBL-002</strong></td><td>Toyota Avanza Veloz</td><td>N 1234 AB</td><td>Rp 400.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>MBL-003</strong></td><td>Honda Brio</td><td>N 8821 EF</td><td>Rp 300.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>MBL-004</strong></td><td>Toyota Innova Zenix</td><td>N 7788 GH</td><td>Rp 650.000</td><td><span class="badge badge-danger">Maintenance</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>MBL-005</strong></td><td>Daihatsu Sigra</td><td>N 3332 JK</td><td>Rp 275.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
 </html>

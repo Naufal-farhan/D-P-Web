@@ -1,68 +1,49 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-<body>
-    <header>
-        <h1>RENTAL MOBIL</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Beranda</a></li>
-                <li><a href="../buku/list.html">DATA MOBIL</a></li>
-                <li><a href="../buku/tambah.html">TAMBAH MOBIL</a></li>
-                <li><a href="list.html">DAFTAR PELANGGAN</a></li>
-                <li><a href="tambah.html">TAMBAH PELANGGAN</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>no. Anggota</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>no. HP</th>
-                    <th>Tgl. Bergabung</th>
-                    <th>Email</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>A001</td>
-                    <td>Siti Aminah</td>
-                    <td>Malang</td>
-                    <td>0812xxxx</td>
-                    <td>13/4/2027</td>
-                    <th>456xxx@gmail.com</th>
-                    <td>
-                        <button type="button">Edit</button>
-                        <button type="button">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>A002</td>
-                    <td>Budi Santoso</td>
-                    <td>Batu</td>
-                    <td>0813xxxx</td>
-                    <td>09/2/2027</td>
-                    <th>123xxx@gmail.com</th>
-                    <td>
-                        <button type="button">Edit</button>
-                        <button type="button">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Sistem Admin Rental Mobil &mdash; Jobsheet 1</p>
-    </footer>
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pelanggan | Rental Mobil Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+            <p>Sistem Manajemen Rental</p>
+        </div>
+        <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="../buku/list.html">Data Mobil</a></li>
+                <li class="active"><a href="../anggota/list.html">Data Pelanggan</a></li>
+            </ul>
+    </aside>
 
+    <div class="main-wrapper">
+        <header class="topbar">
+            
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+        <main class="content-body">
+            <h1 class="page-title">Data Pelanggan</h1>
+            <p class="page-description">Daftar pelanggan yang tercatat pada sistem rental.</p>
+            <section class="card">
+                <div class="card-header"><h2>Data Pelanggan</h2><a class="btn btn-primary" href="../anggota/tambah.html">+ Tambah Pelanggan</a></div>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>ID Pelanggan</th><th>Nama</th><th>No. Telepon</th><th>Email</th><th>Kota</th><th>Aksi</th></tr></thead>
+                        <tbody>
+<tr><td><strong>PLG-001</strong></td><td>Ahmad Rizky</td><td>0812-3456-7890</td><td>ahmad@example.com</td><td>Malang</td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>PLG-002</strong></td><td>Dewi Sartika</td><td>0813-2345-6789</td><td>dewi@example.com</td><td>Batu</td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>PLG-003</strong></td><td>Bima Pratama</td><td>0821-2222-3333</td><td>bima@example.com</td><td>Kepanjen</td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>PLG-004</strong></td><td>Siti Rahma</td><td>0857-7777-8888</td><td>siti@example.com</td><td>Malang</td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+<tr><td><strong>PLG-005</strong></td><td>Raka Putra</td><td>0819-1111-2222</td><td>raka@example.com</td><td>Singosari</td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
 </html>

@@ -1,61 +1,49 @@
 <!DOCTYPE html>
 <html lang="id">
-    
-    <head>
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Pelanggan | Rental Mobil Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
 <body>
-    <header>
-        <h1>SIMPUS-MINI</h1>
-        <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Beranda</a></li>
-                <li><a href="../buku/list.html">Daftar Buku</a></li>
-                <li><a href="../buku/tambah.html">Tambah Buku</a></li>
-                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
-                <li><a href="tambah.html">Tambah Anggota</a></li>
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+            <p>Sistem Manajemen Rental</p>
+        </div>
+        <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="../buku/list.html">Data Mobil</a></li>
+                <li class="active"><a href="../anggota/list.html">Data Pelanggan</a></li>
             </ul>
-        </nav>
-    </header>
+    </aside>
+    <button class="sidebar-overlay" id="sidebar-overlay" type="button" aria-label="Tutup navigasi"></button>
 
-    <main>
-        <form id="form-tambah">
-            <p>
-                <label for="nama">Nama</label><br>
-                <input type="text" id="nama" name="nama" required>
-            </p>
-            <p>
-                <label for="no_anggota">No. Anggota</label><br>
-                <input type="text" id="no_anggota" name="no_anggota" required>
-            </p>
-            <p>
-                <label for="alamat">Alamat</label><br>
-                <input type="text" id="alamat" name="alamat">
-            </p>
-            <p>
-                <label for="no_hp">No. HP</label><br>
-                <input type="text" id="no_hp" name="no_hp">
-            </p>
-            <p>
-                <label for="tgl_gabung">Tgl. Bergabung</label><br>
-                <input type="date" id="tgl_gabung" name="tgl_gabung">
-            </p>
-            <p>
-                <label for="email">Email</label><br>
-                <input type="email" id="email" name="email">
-            </p>
-            <p>
-                <button type="submit">Simpan</button>
-            </p>
-        </form>
-    </main>
-    
-    <footer>
-        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
-    </footer>
-    <script src="../assets/js/app.js"></script>
+    <div class="main-wrapper">
+        <header class="topbar">
+            <button type="button" id="menu-toggle" class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="sidebar">☰</button>
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+        <main class="content-body">
+            <h1 class="page-title">Tambah Pelanggan</h1>
+            <p class="page-description">Lengkapi data pelanggan. Pada tahap ini form masih berupa contoh antarmuka statis.</p>
+            <section class="card">
+                <div class="card-header"><h2>Informasi Pelanggan</h2></div>
+                <form action="#" method="get">
+                    <div class="form-grid">
+                    <div class="form-group"><label for="id-pelanggan">ID Pelanggan</label><input id="id-pelanggan" name="id-pelanggan" type="text" placeholder="Contoh: PLG-006" required></div>
+                    <div class="form-group"><label for="nama">Nama Lengkap</label><input id="nama" name="nama" type="text" placeholder="Nama pelanggan" required></div>
+                    <div class="form-group"><label for="telepon">Nomor Telepon</label><input id="telepon" name="telepon" type="tel" placeholder="08xxxxxxxxxx" required></div>
+                    <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="nama@example.com" required></div>
+                    <div class="form-group"><label for="kota">Kota</label><input id="kota" name="kota" type="text" placeholder="Contoh: Malang" required></div>
+                    </div>
+                    <div class="form-actions"><button type="submit" class="btn btn-primary">Simpan Data</button><a href="../anggota/list.html" class="btn btn-secondary">Kembali</a></div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="../assets/js/app.js" defer></script>
 </body>
-
 </html>

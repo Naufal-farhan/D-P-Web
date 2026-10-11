@@ -1,65 +1,49 @@
 <!DOCTYPE html>
 <html lang="id">
-    
-    <head>
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-        <body>
-    <header>
-        <h1>SIMPUS-MINI</h1>
-        <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Beranda</a></li>
-                <li><a href="list.html">Daftar Buku</a></li>
-                <li><a href="tambah.html">Tambah Buku</a></li>
-                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
-                <li><a href="../anggota/tambah.html">Tambah Anggota</a></li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Mobil | Rental Mobil Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <h2>Rental Mobil Admin</h2>
+            <p>Sistem Manajemen Rental</p>
+        </div>
+        <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li class="active"><a href="../buku/list.html">Data Mobil</a></li>
+                <li><a href="../anggota/list.html">Data Pelanggan</a></li>
             </ul>
-        </nav>
-    </header>
+    </aside>
+    <button class="sidebar-overlay" id="sidebar-overlay" type="button" aria-label="Tutup navigasi"></button>
 
-    <main>
-        <form id="form-tambah">
-            <p>
-                <label for="judul">judul</label><br>
-                <input type="text" id="judul" name="judul" required>
-            </p>
-            <p>
-                <label for="Pengarang">Pengarang</label><br>
-                <input type="text" id="Pengarang" name="Pengarang" required>
-            </p>
-            <p>
-                <label for="tahun">Tahun Terbit</label><br>
-                <input type="date" id="tahun" name="tahun" required>
-            </p>
-            <p>
-                <label for="isbn">ISBN</label><br>
-                <input type="isbn" id="isbn" name="judul" required>
-            </p>
-            <p>
-                <label for="stok">Stok</label><br>
-                <input type="number" id="stok" name="stok" required>
-            </p>
-            <p>
-                <label for="kategori">Kategori</label><br>
-                <select id="kategori" name="kategori" required>
-                    <option value="fiksi">Fiksi</option>
-                    <option value="non-fiksi">non-Fiksi</option>
-                    <option value="referensi">Referensi</option>
-                </select>
-            </p>
-            <p>
-                <button type="Submit">Submit</button>
-            </p>
-        </form>
-    </main>
-    
-    <footer>
-        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
-    </footer>
-    <script src="../assets/js/app.js"></script>
+    <div class="main-wrapper">
+        <header class="topbar">
+            <button type="button" id="menu-toggle" class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="sidebar">☰</button>
+            <div class="title">Sistem Manajemen Rental Mobil</div>
+            <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
+        </header>
+        <main class="content-body">
+            <h1 class="page-title">Tambah Mobil</h1>
+            <p class="page-description">Lengkapi data kendaraan. Pada tahap ini form masih berupa contoh antarmuka statis.</p>
+            <section class="card">
+                <div class="card-header"><h2>Informasi Mobil</h2></div>
+                <form action="#" method="get">
+                    <div class="form-grid">
+                    <div class="form-group"><label for="id-mobil">ID Mobil</label><input id="id-mobil" name="id-mobil" type="text" placeholder="Contoh: MBL-006" required></div>
+                    <div class="form-group"><label for="merk">Merk / Model</label><input id="merk" name="merk" type="text" placeholder="Contoh: Toyota Avanza" required></div>
+                    <div class="form-group"><label for="plat">Nomor Polisi</label><input id="plat" name="plat" type="text" placeholder="Contoh: N 1234 AB" required></div>
+                    <div class="form-group"><label for="tarif">Tarif per Hari (Rp)</label><input id="tarif" name="tarif" type="number" min="0" placeholder="400000" required></div>
+                    <div class="form-group"><label for="status">Status Mobil</label><select id="status" name="status" required><option value="">Pilih status</option><option>Tersedia</option><option>Disewa</option><option>Maintenance</option></select></div>
+                    </div>
+                    <div class="form-actions"><button type="submit" class="btn btn-primary">Simpan Data</button><a href="list.html" class="btn btn-secondary">Kembali</a></div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="../assets/js/app.js" defer></script>
 </body>
-
 </html>
