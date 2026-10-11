@@ -54,7 +54,7 @@ Pada proyek ini, pembagiannya seperti berikut:
 | `.css` | Aturan tampilan | `assets/css/style.css` |
 | `.js` | Logika/interaksi browser | `assets/js/app.js`, `buku.js`, `anggota.js` |
 | `.json` | Data terstruktur | `data/buku.json`, `data/anggota.json` |
-| `.md` | Dokumentasi teks dengan heading/list/kode | `laporan.md`, `docs/wireframe.md` |
+| `.md` | Dokumentasi text dengan heading/list/kode | `laporan.md`, `docs/wireframe.md` |
 
 ## 0.2 Struktur direktori versi revisi
 
