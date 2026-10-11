@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Mobil | Rental Mobil Admin</title>
 </head>
+
 <body>
     <aside class="sidebar" id="sidebar">
         <div class="brand">
@@ -12,15 +14,15 @@
             <p>Sistem Manajemen Rental</p>
         </div>
         <ul class="nav-links">
-                <li><a href="../index.html">Dashboard</a></li>
-                <li class="active"><a href="../buku/list.html">Data Mobil</a></li>
-                <li><a href="../anggota/list.html">Data Pelanggan</a></li>
-            </ul>
+            <li><a href="../index.html">Dashboard</a></li>
+            <li class="active"><a href="../buku/list.html">Data Mobil</a></li>
+            <li><a href="../anggota/list.html">Data Pelanggan</a></li>
+        </ul>
     </aside>
 
     <div class="main-wrapper">
         <header class="topbar">
-            
+
             <div class="title">Sistem Manajemen Rental Mobil</div>
             <div class="user-info">Selamat Datang, <strong>Admin Staff</strong></div>
         </header>
@@ -28,16 +30,82 @@
             <h1 class="page-title">Data Mobil</h1>
             <p class="page-description">Daftar kendaraan yang tercatat pada sistem rental.</p>
             <section class="card">
-                <div class="card-header"><h2>Data Mobil</h2><a class="btn btn-primary" href="tambah.html">+ Tambah Mobil</a></div>
+                <div class="card-header">
+                    <h2>Data Mobil</h2><a class="btn btn-primary" href="tambah.html">+ Tambah Mobil</a>
+                </div>
                 <div class="table-responsive">
                     <table>
-                        <thead><tr><th>ID Mobil</th><th>Merk / Model</th><th>Nomor Polisi</th><th>Tarif per Hari</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>ID Mobil</th>
+                                <th>Merk / Model</th>
+                                <th>Nomor Polisi</th>
+                                <th>Tarif per Hari</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
                         <tbody>
-<tr><td><strong>MBL-001</strong></td><td>Mitsubishi Xpander</td><td>N 5678 CD</td><td>Rp 450.000</td><td><span class="badge badge-warning">Disewa</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
-<tr><td><strong>MBL-002</strong></td><td>Toyota Avanza Veloz</td><td>N 1234 AB</td><td>Rp 400.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
-<tr><td><strong>MBL-003</strong></td><td>Honda Brio</td><td>N 8821 EF</td><td>Rp 300.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
-<tr><td><strong>MBL-004</strong></td><td>Toyota Innova Zenix</td><td>N 7788 GH</td><td>Rp 650.000</td><td><span class="badge badge-danger">Maintenance</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
-<tr><td><strong>MBL-005</strong></td><td>Daihatsu Sigra</td><td>N 3332 JK</td><td>Rp 275.000</td><td><span class="badge badge-success">Tersedia</span></td><td><div class="actions"><button type="button" class="btn btn-warning btn-sm">Edit</button><button type="button" class="btn btn-danger btn-sm">Hapus</button></div></td></tr>
+                            <tr>
+                                <td><strong>MBL-001</strong></td>
+                                <td>Mitsubishi Xpander</td>
+                                <td>N 5678 CD</td>
+                                <td>Rp 450.000</td>
+                                <td><span class="badge badge-warning">Disewa</span></td>
+                                <td>
+                                    <div class="actions"><button type="button"
+                                            class="btn btn-warning btn-sm">Edit</button><button type="button"
+                                            class="btn btn-danger btn-sm">Hapus</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MBL-002</strong></td>
+                                <td>Toyota Avanza Veloz</td>
+                                <td>N 1234 AB</td>
+                                <td>Rp 400.000</td>
+                                <td><span class="badge badge-success">Tersedia</span></td>
+                                <td>
+                                    <div class="actions"><button type="button"
+                                            class="btn btn-warning btn-sm">Edit</button><button type="button"
+                                            class="btn btn-danger btn-sm">Hapus</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MBL-003</strong></td>
+                                <td>Honda Brio</td>
+                                <td>N 8821 EF</td>
+                                <td>Rp 300.000</td>
+                                <td><span class="badge badge-success">Tersedia</span></td>
+                                <td>
+                                    <div class="actions"><button type="button"
+                                            class="btn btn-warning btn-sm">Edit</button><button type="button"
+                                            class="btn btn-danger btn-sm">Hapus</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MBL-004</strong></td>
+                                <td>Toyota Innova Zenix</td>
+                                <td>N 7788 GH</td>
+                                <td>Rp 650.000</td>
+                                <td><span class="badge badge-danger">Maintenance</span></td>
+                                <td>
+                                    <div class="actions"><button type="button"
+                                            class="btn btn-warning btn-sm">Edit</button><button type="button"
+                                            class="btn btn-danger btn-sm">Hapus</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MBL-005</strong></td>
+                                <td>Daihatsu Sigra</td>
+                                <td>N 3332 JK</td>
+                                <td>Rp 275.000</td>
+                                <td><span class="badge badge-success">Tersedia</span></td>
+                                <td>
+                                    <div class="actions"><button type="button"
+                                            class="btn btn-warning btn-sm">Edit</button><button type="button"
+                                            class="btn btn-danger btn-sm">Hapus</button></div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -45,4 +113,5 @@
         </main>
     </div>
 </body>
+
 </html>

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Hitung Statistik Mobil
-    fetch('data/buku.json')
+    fetch('data/buku.json')``
         .then(response => response.json())
         .then(dataMobil => {
             const totalMobilEl = document.getElementById('total-mobil');
